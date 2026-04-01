@@ -1,0 +1,9 @@
+export { default as HomePage } from './Home';
+export { default as MenuPage } from './Menu';
+export { default as AboutPage } from './About';
+export { default as ReservationsPage } from './Reservations';
+export { default as ContactPage } from './Contact';
+export { default as NotFoundPage } from './NotFound';
+export { default as AdminMenuPage } from './AdminMenu';
+export { default as AdminDashboardPage } from './AdminDashboard';
+export { default as OrderPage } from './Order';

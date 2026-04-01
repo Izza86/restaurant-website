@@ -1,0 +1,16 @@
+{
+  "name": "La Maison",
+  "short_name": "La Maison",
+  "description": "Fine Dining Restaurant — Experience culinary excellence in New York's Culinary District.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5E6D3",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

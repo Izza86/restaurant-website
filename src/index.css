@@ -1,0 +1,798 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ╔═══════════════════════════════════════════════════════════════════╗
+   ║  LA MAISON — Restaurant Global Stylesheet                       ║
+   ║  Warm Gold (#D4AF37) · Charcoal (#2C2C2C) · Cream (#F5E6D3)    ║
+   ╚═══════════════════════════════════════════════════════════════════╝ */
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   1. BASE LAYER — resets, smooth scroll, global defaults
+   ───────────────────────────────────────────────────────────────────── */
+@layer base {
+
+  /* ── Smooth scrolling & scroll-behaviour ────────────── */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* offset for fixed header */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply antialiased bg-white text-charcoal;
+    overflow-x: hidden;                        /* prevent horizontal bleed from animations */
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ── Elegant selection highlight ────────────────────── */
+  ::selection {
+    @apply bg-primary-400/30 text-charcoal;
+  }
+
+  ::-moz-selection {
+    background: rgba(212, 175, 55, 0.3);
+    color: #2C2C2C;
+  }
+
+  /* ── Smooth image rendering ─────────────────────────── */
+  img {
+    @apply max-w-full h-auto;
+    image-rendering: auto;
+  }
+
+  /* ── Focus-visible for accessibility ────────────────── */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+
+  /* ── Smooth transitions on all interactive elements ─── */
+  a, button, input, textarea, select {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   2. COMPONENT LAYER — reusable UI patterns
+   ───────────────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* ══════════════════════════════════════════════════════
+     BUTTONS — with shimmer, glow & micro-interactions
+     ══════════════════════════════════════════════════════ */
+
+  .btn-primary {
+    @apply inline-block bg-primary-500 hover:bg-primary-700 text-white font-semibold
+           py-3 px-8 rounded-full shadow-gold;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    transition: left 0.6s ease;
+    z-index: -1;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+  }
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.3);
+  }
+
+  .btn-outline {
+    @apply inline-block border-2 border-primary-500 text-primary-500
+           hover:text-white font-semibold py-3 px-8 rounded-full;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+  }
+  .btn-outline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #D4AF37;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+  }
+  .btn-outline:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .btn-outline:hover {
+    border-color: #D4AF37;
+    transform: translateY(-2px);
+  }
+  .btn-outline:active {
+    transform: translateY(0) scale(0.97);
+  }
+
+  .btn-dark {
+    @apply inline-block bg-charcoal hover:bg-dark-lighter text-white font-semibold
+           py-3 px-8 rounded-full shadow-card;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-dark:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(44, 44, 44, 0.25);
+  }
+  .btn-dark:active {
+    transform: translateY(0);
+  }
+
+  .btn-cream {
+    @apply inline-block bg-cream hover:bg-accent-dark text-charcoal font-semibold
+           py-3 px-8 rounded-full;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-cream:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 230, 211, 0.5);
+  }
+
+
+  /* ══════════════════════════════════════════════════════
+     LAYOUT
+     ══════════════════════════════════════════════════════ */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ── Desktop nav link hover underline ───────────────── */
+  .nav-link-desktop {
+    position: relative;
+  }
+  .nav-link-desktop::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #D4AF37, #F5E6D3, #D4AF37);
+    transform: translateX(-50%);
+    transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .nav-link-desktop:hover::after {
+    width: 70%;
+  }
+  .nav-link-desktop[class*="text-primary"]::after {
+    width: 70%;
+  }
+
+
+  /* ── Page-level transition wrapper ───────────────────── */
+  .page-transition-wrapper {
+    will-change: opacity, transform;
+  }
+  .page-enter {
+    animation: page-fade-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .page-exit {
+    animation: page-fade-out 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+  }
+
+
+  /* ══════════════════════════════════════════════════════
+     TYPOGRAPHY
+     ══════════════════════════════════════════════════════ */
+  .section-title {
+    @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 text-lg md:text-xl max-w-2xl mx-auto;
+  }
+
+
+  /* ══════════════════════════════════════════════════════
+     RESTAURANT-SPECIFIC COMPONENTS
+     ══════════════════════════════════════════════════════ */
+
+  /* ── Menu item card ─────────────────────────────────── */
+  .menu-card {
+    @apply bg-white rounded-menu overflow-hidden shadow-menu;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(44, 44, 44, 0.15);
+  }
+  .menu-card img {
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .menu-card:hover img {
+    transform: scale(1.08);
+  }
+
+  /* ── Price tag ──────────────────────────────────────── */
+  .price-tag {
+    @apply text-primary-500 font-heading font-bold text-lg;
+    transition: color 0.3s ease;
+  }
+  .menu-card:hover .price-tag {
+    @apply text-primary-700;
+  }
+
+  /* ── Category badge ─────────────────────────────────── */
+  .category-badge {
+    @apply px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider
+           bg-cream text-charcoal border border-primary-200;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+  }
+  .category-badge:hover {
+    @apply bg-primary-100 border-primary-400;
+    transform: translateY(-1px);
+  }
+
+  .category-badge-active {
+    @apply bg-primary-500 text-white border-primary-500 shadow-gold;
+    transform: scale(1.05);
+  }
+
+  /* ── Popular / featured label ───────────────────────── */
+  .popular-badge {
+    @apply absolute top-3 right-3 bg-burgundy text-white
+           text-xs font-bold px-3 py-1 rounded-full shadow-md;
+    animation: badge-pulse 2s ease-in-out infinite;
+  }
+
+  /* ── Form inputs ────────────────────────────────────── */
+  .form-input {
+    @apply w-full border border-gray-300 rounded-card py-3 px-4
+           bg-white text-charcoal placeholder-gray-400;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .form-input:focus {
+    @apply outline-none border-primary-500 ring-2 ring-primary-400/20;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.1);
+  }
+
+  .form-input-dark {
+    @apply w-full bg-dark-lighter/60 border border-gray-600 rounded-card py-3 px-4
+           text-white placeholder-gray-400;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .form-input-dark:focus {
+    @apply outline-none border-primary-500 ring-2 ring-primary-500/20;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
+  }
+
+  /* ── Dark calendar / date-picker styling ─────────── */
+  .calendar-dark::-webkit-calendar-picker-indicator {
+    filter: invert(0.7) sepia(0.5) hue-rotate(5deg) brightness(1.2);
+    cursor: pointer;
+  }
+
+  .form-input-dark option,
+  .form-input-dark optgroup {
+    background: #2C2C2C;
+    color: #f5f5f5;
+  }
+
+  /* Error state highlight for form-input-dark */
+  .form-input-dark.\!border-red-400\/70 {
+    border-color: rgba(248, 113, 113, 0.7) !important;
+  }
+
+  /* ── Gold decorative divider ────────────────────────── */
+  .divider-gold {
+    @apply w-20 h-1 mx-auto rounded-full;
+    background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .divider-gold:hover,
+  *:hover > .divider-gold {
+    @apply w-32;
+  }
+
+  /* ── Section backgrounds ────────────────────────────── */
+  .bg-section-cream {
+    @apply bg-accent-light;
+  }
+
+  .bg-section-dark {
+    @apply bg-charcoal text-white;
+  }
+
+  /* ── Testimonial / review card ──────────────────────── */
+  .review-card {
+    @apply bg-white rounded-2xl p-6 lg:p-7 shadow-card
+           border border-gray-100;
+    transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+  .review-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(135deg, transparent 40%, rgba(212, 175, 55, 0.25) 60%, transparent 80%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .review-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 20px 50px rgba(44, 44, 44, 0.08),
+      0 0 0 1px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+  .review-card:hover::before {
+    opacity: 1;
+  }
+
+  /* ── Star rating ────────────────────────────────────── */
+  .star-filled {
+    @apply text-primary-500;
+    filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.45));
+  }
+
+  .star-empty {
+    @apply text-gray-300;
+  }
+
+  /* ── Page banner ────────────────────────────────────── */
+  .page-banner {
+    @apply relative h-72 md:h-96 flex items-center justify-center bg-cover bg-center;
+  }
+
+  /* ── Overlay ────────────────────────────────────────── */
+  .overlay-dark {
+    @apply absolute inset-0 bg-charcoal/60;
+  }
+
+  /* ── Social icon ────────────────────────────────────── */
+  .social-icon {
+    @apply w-10 h-10 rounded-full bg-dark-lighter flex items-center justify-center
+           text-white;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .social-icon:hover {
+    @apply bg-primary-500;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+  }
+  .social-icon:active {
+    transform: translateY(0) scale(0.95);
+  }
+
+  /* ── Footer heading ─────────────────────────────────── */
+  .footer-heading {
+    @apply font-heading text-sm font-semibold text-white
+           uppercase tracking-[0.15em] mb-5;
+    position: relative;
+    padding-bottom: 0.6rem;
+  }
+  .footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #D4AF37, transparent);
+  }
+
+  /* ── Footer nav link ────────────────────────────────── */
+  .footer-link {
+    @apply flex items-center gap-2.5 text-sm text-gray-400
+           hover:text-primary-400 transition-all duration-300;
+  }
+  .footer-link:hover {
+    transform: translateX(4px);
+  }
+
+  /* ── Footer info row ────────────────────────────────── */
+  .footer-info-row {
+    @apply flex items-start gap-2.5;
+  }
+
+  /* ── Footer social card (grid tile) ─────────────────── */
+  .footer-social-card {
+    @apply flex flex-col items-center justify-center
+           py-3 rounded-xl
+           bg-white/[0.03] border border-white/[0.06];
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .footer-social-card:hover {
+    @apply bg-white/[0.07] border-primary-500/20;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ── Gold accent link ───────────────────────────────── */
+  .link-gold {
+    @apply text-primary-500;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .link-gold::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #D4AF37, #F5E6D3);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .link-gold:hover {
+    @apply text-primary-700;
+  }
+  .link-gold:hover::after {
+    width: 100%;
+  }
+
+  /* ── Contact info card ──────────────────────────────── */
+  .contact-info-card {
+    @apply flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm
+           border border-gray-100;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .contact-info-card:hover {
+    @apply shadow-md border-primary-200/50;
+    transform: translateX(4px);
+  }
+
+  /* ── Contact map wrapper ────────────────────────────── */
+  .contact-map-wrapper {
+    transition: box-shadow 0.4s ease;
+  }
+  .contact-map-wrapper:hover {
+    box-shadow: 0 12px 36px rgba(44, 44, 44, 0.1);
+  }
+
+  /* ── Home page: contact preview card ────────────────── */
+  .home-contact-card {
+    @apply bg-white rounded-2xl p-6 shadow-sm border border-gray-100
+           text-center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .home-contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(44, 44, 44, 0.07);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+  .home-contact-card .w-12 {
+    @apply mx-auto;
+  }
+
+  /* ── About page: value card ─────────────────────────── */
+  .about-value-card {
+    @apply bg-white rounded-2xl p-7 shadow-sm border border-gray-100;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .about-value-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(44, 44, 44, 0.08);
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+
+  /* ── About page: team card ──────────────────────────── */
+  .about-team-card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden;
+    transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .about-team-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 24px 56px rgba(44, 44, 44, 0.1),
+      0 0 0 1px rgba(212, 175, 55, 0.12);
+  }
+
+  /* ── About page: award card ─────────────────────────── */
+  .about-award-card {
+    @apply relative rounded-2xl p-6 border border-white/[0.06]
+           bg-gradient-to-br from-white/[0.04] to-transparent;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(4px);
+  }
+  .about-award-card:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 100%);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   3. UTILITIES LAYER — animations, gradients & helpers
+   ───────────────────────────────────────────────────────────────────── */
+@layer utilities {
+
+  /* ── Gold text gradient ─────────────────────────────── */
+  .text-gold-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-400 to-primary-600;
+  }
+
+  /* ── Cream-to-white fade ────────────────────────────── */
+  .bg-cream-fade {
+    background: linear-gradient(180deg, #F5E6D3 0%, #FFFFFF 100%);
+  }
+
+  /* ── Dark cinematic gradient ────────────────────────── */
+  .bg-dark-vignette {
+    background: radial-gradient(ellipse at center, #3A3A3A 0%, #2C2C2C 70%);
+  }
+
+  /* ── Gold shimmer background ────────────────────────── */
+  .bg-gold-shimmer {
+    background: linear-gradient(
+      110deg,
+      #D4AF37 0%,
+      #F5E6D3 25%,
+      #D4AF37 50%,
+      #F5E6D3 75%,
+      #D4AF37 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* ── Subtle gold border ─────────────────────────────── */
+  .border-gold {
+    @apply border border-primary-400/30;
+  }
+
+  /* ── Hide scrollbar ─────────────────────────────────── */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     FADE-IN ANIMATIONS (scroll-triggered via class)
+     Add these to any element for entrance animations.
+     Pair with IntersectionObserver or use directly.
+     ══════════════════════════════════════════════════════ */
+
+  /* Fade in from below */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fade in from left */
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Fade in from right */
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scale up from center */
+  .fade-in-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .fade-in-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Stagger delay helpers — use with fade-in-* classes */
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+  .stagger-6 { transition-delay: 0.6s; }
+
+  /* ── Parallax-feel slow zoom (for hero backgrounds) ── */
+  .zoom-slow {
+    animation: slow-zoom 25s ease-in-out infinite alternate;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   4. KEYFRAME ANIMATIONS
+   ───────────────────────────────────────────────────────────────────── */
+
+/* Shimmer sweep */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Gentle pulse for popular badge */
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(114, 47, 55, 0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba(114, 47, 55, 0); }
+}
+
+/* Hero background slow zoom */
+@keyframes slow-zoom {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* Floating animation (decorative elements) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Rotate (loading spinners, decorative) */
+@keyframes spin-slow {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Slide down for dropdown / mobile menu */
+@keyframes slide-down {
+  0%   { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Gentle heartbeat for CTA elements */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.05); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.03); }
+  60%      { transform: scale(1); }
+}
+
+/* Success overlay — checkmark pop */
+@keyframes scale-pop {
+  0%   { transform: scale(0.3); opacity: 0; }
+  60%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Fade in (used on success overlay) */
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Hero scroll-indicator — dot travels down the pill */
+@keyframes scroll-dot {
+  0%       { opacity: 1; top: 0.5rem; }
+  50%      { opacity: 0.6; top: 1.5rem; }
+  80%      { opacity: 0; top: 1.8rem; }
+  100%     { opacity: 0; top: 0.5rem; }
+}
+
+/* Hero scroll-indicator — chevrons pulse down */
+@keyframes scroll-arrows {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50%      { opacity: 1;   transform: translateY(4px); }
+}
+
+/* Page transition — enter (fade + slide up) */
+@keyframes page-fade-in {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Page transition — exit (fade out + slide up) */
+@keyframes page-fade-out {
+  0%   { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-8px); }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   5. CUSTOM SCROLLBAR
+   ───────────────────────────────────────────────────────────────────── */
+
+/* Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF3EB;                        /* accent-light */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37, #b8952e);
+  border-radius: 999px;
+  border: 2px solid #FAF3EB;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b8952e, #9a7825);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #9a7825;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF37 #FAF3EB;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   6. REDUCED MOTION — respect user preferences
+   ───────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in-up,
+  .fade-in-left,
+  .fade-in-right,
+  .fade-in-scale {
+    opacity: 1;
+    transform: none;
+  }
+}
