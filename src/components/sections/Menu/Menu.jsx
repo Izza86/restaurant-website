@@ -314,7 +314,8 @@ const DietaryBadge = ({ tag }) => {
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const MenuCard = ({ item, isFav, onToggleFav, index }) => (
   <div
-    className={`group menu-card fade-in-scale stagger-${Math.min((index % 6) + 1, 6)} flex flex-col`}
+    className="group menu-card menu-card-enter flex flex-col"
+    style={{ animationDelay: `${(index % 6) * 0.08}s` }}
   >
     {/* ── Image ────────────────────────────────────────── */}
     <div className="relative overflow-hidden h-52 sm:h-48 lg:h-52">
