@@ -19,7 +19,7 @@ export default defineConfig({
         manualChunks: {
           // Split heavy vendor libraries into separate chunks
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-firebase': ['firebase/app', 'firebase/firestore'],
+          'vendor-firebase': ['firebase/app', 'firebase/database'],
         },
       },
     },

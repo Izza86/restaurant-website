@@ -439,7 +439,7 @@ const MenuSection = ({ limit }) => {
   const searchRef = useRef(null);
   const revealRef = useScrollReveal();
 
-  /* ── fetch menu items from Firestore ────────────────── */
+  /* ── fetch menu items from Realtime Database ─────────── */
   useEffect(() => {
     let cancelled = false;
 
@@ -448,11 +448,20 @@ const MenuSection = ({ limit }) => {
         setMenuLoading(true);
         setMenuError(null);
         const raw = await fetchMenuItemsFromFirestore();
+
         if (!cancelled && raw.length > 0) {
-          setMenuItems(raw.map(normalizeMenuItem));
+          const dbItems = raw.map(normalizeMenuItem);
+          // Categories that already have items in the database
+          const dbCategories = new Set(dbItems.map((i) => i.category));
+          // Keep fallback items for categories NOT yet in the database
+          const keptFallback = fallbackMenuItems.filter(
+            (i) => !dbCategories.has(i.category)
+          );
+          setMenuItems([...dbItems, ...keptFallback]);
         }
+        // If DB is empty, keep fallbackMenuItems (initial state)
       } catch (err) {
-        console.warn('[Menu] Firestore unavailable, using local data:', err.message);
+        console.warn('[Menu] Database unavailable, using local data:', err.message);
         if (!cancelled) {
           setMenuError('Using offline menu. Showing cached items.');
           setMenuItems(fallbackMenuItems);

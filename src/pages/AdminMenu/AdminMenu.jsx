@@ -447,11 +447,6 @@ const AdminMenu = () => {
   /* ── authenticated view ─────────────────────────────── */
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* ── Warning Banner ────────────────────────────── */}
-      <div className="bg-amber-500 text-amber-950 text-sm text-center py-2.5 px-4 font-medium">
-        ⚠️ Admin page is for development only — secure or remove before production.
-      </div>
-
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-8">
         {/* ── Header ──────────────────────────────────── */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -460,7 +455,7 @@ const AdminMenu = () => {
               Menu Manager
             </h1>
             <p className="text-gray-400 text-sm mt-1">
-              Add, edit, or remove dishes from Firestore.
+              Add, edit, or remove dishes from the menu.
             </p>
           </div>
           <button
