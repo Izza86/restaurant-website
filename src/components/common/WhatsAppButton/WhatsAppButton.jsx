@@ -7,8 +7,8 @@ import { FaWhatsapp } from 'react-icons/fa';
    Update PHONE_NUMBER with the restaurant owner's WhatsApp number.
    ═══════════════════════════════════════════════════════════════════ */
 
-const PHONE_NUMBER = '923001234567'; // ← Replace with real number (country code, no +, no dashes)
-const DEFAULT_MESSAGE = "Hi! I'd like to make an inquiry about La Maison.";
+const PHONE_NUMBER = '971523840692'; // Aresh Al Madinah Restaurant Dubai
+const DEFAULT_MESSAGE = "Hi! I'd like to make an inquiry about Aresh Al Madinah Restaurant.";
 
 const WhatsAppButton = () => {
   const [visible, setVisible] = useState(false);

@@ -5,7 +5,7 @@ const ReservationsPage = () => {
     <>
       <SEO
         title="Reservations"
-        description="Reserve your table at La Maison. Book online for an unforgettable fine dining experience in New York's Culinary District."
+        description="Reserve your table at Aresh Al Madinah Restaurant. Book online for authentic Desi dining in Al Muteena, Deira, Dubai."
       />
       {/* Page Banner */}
       <section

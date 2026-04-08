@@ -18,25 +18,25 @@ import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
    ║  RESTAURANT INFO                                                 ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const RESTAURANT = {
-  name: 'La Maison Fine Dining & Bar',
-  address: '123 Gourmet Avenue, Culinary District',
-  city: 'New York, NY 10001',
-  phone: '(212) 555-1234',
-  phoneTel: '+12125551234',
-  email: 'hello@lamaison.com',
-  mapsQuery: '123+Gourmet+Avenue,+New+York,+NY+10001',
+  name: 'Aresh Al Madinah Restaurant',
+  address: 'Al Muteena, Deira',
+  city: 'Dubai, UAE',
+  phone: '04 570 1603',
+  phoneTel: '+97145701603',
+  email: 'areshalmadinah@gmail.com',
+  mapsQuery: 'Aresh+Al+Madinah+Restaurant+Dubai',
   mapsEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2!2d-73.99!3d40.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzI0LjAiTiA3M8KwNTknMjQuMCJX!5e0!3m2!1sen!2sus!4v1',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.5!2d55.32!3d25.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE2JzEyLjAiTiA1NcKwMTknMTIuMCJF!5e0!3m2!1sen!2sae!4v1',
 };
 
 const HOURS = [
-  { day: 'Monday',    open: '11:00 AM', close: '10:00 PM' },
-  { day: 'Tuesday',   open: '11:00 AM', close: '10:00 PM' },
-  { day: 'Wednesday', open: '11:00 AM', close: '10:00 PM' },
-  { day: 'Thursday',  open: '11:00 AM', close: '10:00 PM' },
-  { day: 'Friday',    open: '11:00 AM', close: '11:00 PM' },
-  { day: 'Saturday',  open: '10:00 AM', close: '11:00 PM' },
-  { day: 'Sunday',    open: '10:00 AM', close: '9:00 PM'  },
+  { day: 'Monday',    open: '6:00 AM', close: '2:00 AM' },
+  { day: 'Tuesday',   open: '6:00 AM', close: '2:00 AM' },
+  { day: 'Wednesday', open: '6:00 AM', close: '2:00 AM' },
+  { day: 'Thursday',  open: '6:00 AM', close: '2:00 AM' },
+  { day: 'Friday',    open: '6:00 AM', close: '2:00 AM' },
+  { day: 'Saturday',  open: '6:00 AM', close: '2:00 AM' },
+  { day: 'Sunday',    open: '6:00 AM', close: '2:00 AM' },
 ];
 
 const SOCIALS = [
@@ -327,7 +327,7 @@ const ContactSection = () => {
             {/* ── Google Map Embed ────────────────────── */}
             <div className="rounded-2xl overflow-hidden shadow-sm border border-gray-100 contact-map-wrapper">
               <iframe
-                title="La Maison restaurant location"
+                title="Aresh Al Madinah Restaurant location"
                 src={RESTAURANT.mapsEmbed}
                 className="w-full h-56 md:h-64 border-0"
                 allowFullScreen

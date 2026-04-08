@@ -16,10 +16,10 @@ import {
    ║  ABOUT SNAPSHOT DATA                                             ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const aboutHighlights = [
-  { stat: '20+', label: 'Years of Excellence' },
-  { stat: '150K+', label: 'Happy Guests' },
-  { stat: '1', label: 'Michelin Star' },
-  { stat: '45+', label: 'Awards Won' },
+  { stat: '60+', label: 'Dishes on Menu' },
+  { stat: '1000+', label: 'Happy Customers' },
+  { stat: '6', label: 'Food Categories' },
+  { stat: '7 Days', label: 'Open Weekly' },
 ];
 
 
@@ -30,28 +30,28 @@ const contactItems = [
   {
     icon: HiOutlineLocationMarker,
     label: 'Visit Us',
-    value: '123 Gourmet Avenue, Culinary District, NY 10001',
-    href: 'https://www.google.com/maps/search/?api=1&query=123+Gourmet+Avenue,+New+York,+NY+10001',
+    value: 'Al Muteena, Deira, Dubai, UAE',
+    href: 'https://www.google.com/maps/search/?api=1&query=Aresh+Al+Madinah+Restaurant+Dubai',
     external: true,
   },
   {
     icon: HiOutlinePhone,
     label: 'Call Us',
-    value: '(212) 555-1234',
-    href: 'tel:+12125551234',
+    value: '04 570 1603',
+    href: 'tel:+97145701603',
     external: false,
   },
   {
     icon: HiOutlineMail,
     label: 'Email',
-    value: 'hello@lamaison.com',
-    href: 'mailto:hello@lamaison.com',
+    value: 'areshalmadinah@gmail.com',
+    href: 'mailto:areshalmadinah@gmail.com',
     external: false,
   },
   {
     icon: HiOutlineClock,
     label: 'Hours',
-    value: 'Mon–Fri 11AM–10PM · Sat 10AM–11PM · Sun 10AM–9PM',
+    value: 'Mon–Sun 6AM–2AM',
     href: null,
     external: false,
   },
@@ -70,7 +70,7 @@ const HomePage = () => {
     <>
       <SEO
         title={null}
-        description="La Maison — Award-winning fine dining restaurant in New York. Michelin-starred cuisine, unforgettable atmosphere, and impeccable service. Reserve your table today."
+        description="Aresh Al Madinah Restaurant — Taste the World on One Plate. Authentic Pakistani & Indian cuisine in Dubai. Karahi, Biryani, BBQ, and more. Order online or reserve your table."
       />
 
       {/* ══════════════════════════════════════════════════
@@ -99,7 +99,7 @@ const HomePage = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img
                   src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=700&q=80"
-                  alt="La Maison dining interior"
+                  alt="Aresh Al Madinah Restaurant interior"
                   className="w-full h-[350px] sm:h-[420px] object-cover"
                   loading="lazy"
                 />
@@ -116,13 +116,13 @@ const HomePage = () => {
                 />
               </div>
 
-              {/* Michelin badge */}
+              {/* Halal badge */}
               <div className="absolute top-4 left-4 bg-charcoal/90 backdrop-blur-sm text-white rounded-xl px-4 py-3 shadow-lg z-10">
                 <div className="flex items-center gap-2">
                   <HiStar className="w-5 h-5 text-primary-400" />
                   <div className="leading-tight">
-                    <p className="text-xs font-bold text-primary-400">Michelin Star</p>
-                    <p className="text-[0.6rem] text-gray-400">Since 2018</p>
+                    <p className="text-xs font-bold text-primary-400">100 % Halal</p>
+                    <p className="text-[0.6rem] text-gray-400">Authentic Desi Cuisine</p>
                   </div>
                 </div>
               </div>
@@ -134,20 +134,19 @@ const HomePage = () => {
                 Our Story
               </p>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-dark leading-tight mb-5">
-                Two Decades of{' '}
-                <span className="text-gold-gradient">Culinary Excellence</span>
+                A Legacy of{' '}
+                <span className="text-gold-gradient">Authentic Flavours</span>
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed text-[0.92rem] mb-8">
                 <p>
-                  Founded in 2005, La Maison began as a cozy Greenwich Village bistro
-                  with a simple dream — to create a space where extraordinary food,
-                  genuine warmth, and lasting memories come together.
+                  Aresh Al Madinah Restaurant brings the authentic flavours of
+                  Pakistan and India to the heart of Dubai. From sizzling Karahis
+                  to aromatic Biryanis, every dish is a celebration of tradition.
                 </p>
                 <p>
-                  Under the guidance of Executive Chef Antoine Moreau, our kitchen
-                  pushes the boundaries of modern cuisine while honouring time-honoured
-                  French traditions. Every ingredient is hand-selected, every recipe
-                  refined with passion.
+                  Our experienced chefs prepare every meal with fresh ingredients
+                  and time-honoured recipes. Whether you’re craving a hearty Nihari
+                  or a special BBQ platter, we serve it with love.
                 </p>
               </div>
 
@@ -275,8 +274,8 @@ const HomePage = () => {
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <SectionHeader
-            title="Visit La Maison"
-            subtitle="We'd love to welcome you. Find us in the heart of New York's Culinary District."
+            title="Visit Us"
+            subtitle="We'd love to welcome you. Find us in Al Muteena, Deira, Dubai."
           />
 
           <div ref={contactRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -317,8 +316,8 @@ const HomePage = () => {
             {/* map */}
             <div className="lg:col-span-3 rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-in-left">
               <iframe
-                title="La Maison restaurant location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2!2d-73.99!3d40.74!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzI0LjAiTiA3M8KwNTknMjQuMCJX!5e0!3m2!1sen!2sus!4v1"
+                title="Aresh Al Madinah Restaurant location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.5!2d55.32!3d25.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE2JzEyLjAiTiA1NcKwMTknMTIuMCJF!5e0!3m2!1sen!2sae!4v1"
                 className="w-full h-56 md:h-64 border-0"
                 allowFullScreen
                 loading="lazy"

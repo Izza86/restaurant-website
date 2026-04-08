@@ -104,7 +104,7 @@ const Hero = () => {
           `}
           style={{ transitionDelay: '200ms' }}
         >
-          ✦&ensp;Welcome to La Maison&ensp;✦
+          ✦&ensp;Taste the World on One Plate&ensp;✦
         </p>
 
         {/* ── main heading ────────────────────────────────────── */}

@@ -85,18 +85,18 @@ const Header = () => {
             group-hover:bg-primary-500 group-hover:text-white
             transition-all duration-300
           ">
-            LM
+            AM
           </span>
 
           <div className="flex flex-col leading-none">
-            <span className="font-heading text-2xl md:text-[1.7rem] font-bold text-white tracking-wide
+            <span className="font-heading text-xl md:text-[1.5rem] font-bold text-white tracking-wide
                              group-hover:text-primary-400 transition-colors duration-300">
-              La&nbsp;
-              <span className="text-gold-gradient">Maison</span>
+              Aresh Al&nbsp;
+              <span className="text-gold-gradient">Madinah</span>
             </span>
-            <span className="hidden sm:block text-[0.6rem] uppercase tracking-[0.35em] text-gray-400
+            <span className="hidden sm:block text-[0.55rem] uppercase tracking-[0.25em] text-gray-400
                              font-body mt-[2px]">
-              Fine Dining &amp; Bar
+              Restaurant
             </span>
           </div>
         </Link>
@@ -208,7 +208,7 @@ const Header = () => {
           {/* ── panel header ───────────────────────────────────── */}
           <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-700/50">
             <span className="font-heading text-xl text-white">
-              La <span className="text-gold-gradient">Maison</span>
+              Aresh Al <span className="text-gold-gradient">Madinah</span>
             </span>
           </div>
 
@@ -278,11 +278,11 @@ const Header = () => {
 
             {/* contact info */}
             <div className="mt-5 flex flex-col items-center gap-1 text-center">
-              <a href="tel:+15551234567" className="text-sm text-gray-400 hover:text-primary-400 transition-colors">
-                (555) 123-4567
+              <a href="tel:+97145701603" className="text-sm text-gray-400 hover:text-primary-400 transition-colors">
+                04 570 1603
               </a>
               <span className="text-xs text-gray-600">
-                Mon – Sun &nbsp;·&nbsp; 11 AM – 11 PM
+                Mon – Sun &nbsp;·&nbsp; 6 AM – 2 AM
               </span>
             </div>
           </div>

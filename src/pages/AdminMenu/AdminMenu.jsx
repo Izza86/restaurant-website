@@ -22,7 +22,12 @@ import {
 /* ╔═══════════════════════════════════════════════════════════════════╗
    ║  CATEGORY OPTIONS                                                ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
-const CATEGORY_OPTIONS = ['Appetizers', 'Main Courses', 'Desserts', 'Beverages'];
+const CATEGORY_OPTIONS = [
+  'Aaresh Special', 'Regular Menu', 'Special Karahi', 'Special Daal',
+  'Veg Menu', 'Biryani / Pulao', 'BBQ & Grill', 'Chinese & Sea Food',
+  'Shawarma & Rolls', 'Burgers & Sandwiches', 'Snacks & Salads',
+  'Roti & Paratha', 'Beverages', 'Meals & Combos',
+];
 
 
 /* ╔═══════════════════════════════════════════════════════════════════╗
@@ -32,7 +37,7 @@ const emptyForm = {
   name: '',
   description: '',
   price: '',
-  category: 'Appetizers',
+  category: 'Aaresh Special',
   image: '',
   dietaryTags: '',
   isFeatured: false,
@@ -600,7 +605,7 @@ const AdminMenu = () => {
 
                       {/* price */}
                       <td className="px-4 py-3 text-right font-medium text-dark">
-                        ${typeof item.price === 'number' ? item.price.toFixed(2) : item.price ?? '—'}
+                        {typeof item.price === 'number' ? item.price.toFixed(2) : item.price ?? '—'} Dhs
                       </td>
 
                       {/* featured */}

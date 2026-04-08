@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lamaison.com/sitemap.xml
+Sitemap: https://restaurant-website-pied-nine.vercel.app/sitemap.xml

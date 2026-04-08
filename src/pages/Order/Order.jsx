@@ -23,15 +23,24 @@ import {
    ║  FALLBACK MENU (if Firebase not connected)                       ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const FALLBACK_ITEMS = [
-  { id: 'f1', name: 'Truffle Bruschetta', price: 16, category: 'Appetizers', image: 'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400&q=80', available: true },
-  { id: 'f2', name: 'French Onion Soup', price: 14, category: 'Appetizers', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&q=80', available: true },
-  { id: 'f3', name: 'Filet Mignon', price: 48, category: 'Main Courses', image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=400&q=80', available: true },
-  { id: 'f4', name: 'Pan-Seared Salmon', price: 36, category: 'Main Courses', image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&q=80', available: true },
-  { id: 'f5', name: 'Crème Brûlée', price: 14, category: 'Desserts', image: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400&q=80', available: true },
-  { id: 'f6', name: 'Tiramisu', price: 13, category: 'Desserts', image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&q=80', available: true },
+  { id: 'f1', name: 'Butter Chicken',    price: 15, category: 'Aaresh Special',   image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f2', name: 'Nihari',            price: 7,  category: 'Regular Menu',     image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f3', name: 'Chicken Karahi',    price: 20, category: 'Special Karahi',   image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f4', name: 'Chicken Biryani',   price: 12, category: 'Biryani / Pulao',  image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80', available: true },
+  { id: 'f5', name: 'Daal Makhani',      price: 10, category: 'Special Daal',     image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f6', name: 'Chicken Charcoal',  price: 18, category: 'BBQ & Grill',      image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f7', name: 'Chicken Manchurian', price: 17, category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f8', name: 'Shawarma',          price: 6,  category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+  { id: 'f9', name: 'Zinger Burger',     price: 14, category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
+  { id: 'f10', name: 'Naan',             price: 3,  category: 'Roti & Paratha',   image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
 ];
 
-const CATEGORY_ORDER = ['Appetizers', 'Main Courses', 'Desserts', 'Beverages'];
+const CATEGORY_ORDER = [
+  'Aaresh Special', 'Regular Menu', 'Special Karahi', 'Special Daal',
+  'Veg Menu', 'Biryani / Pulao', 'BBQ & Grill', 'Chinese & Sea Food',
+  'Shawarma & Rolls', 'Burgers & Sandwiches', 'Snacks & Salads',
+  'Roti & Paratha', 'Beverages', 'Meals & Combos',
+];
 
 
 /* ╔═══════════════════════════════════════════════════════════════════╗
@@ -239,7 +248,7 @@ const OrderPage = () => {
                         <div className="flex items-start justify-between gap-2 mb-2">
                           <h3 className="font-semibold text-dark text-sm">{item.name}</h3>
                           <span className="font-bold text-primary-500 text-sm whitespace-nowrap">
-                            ${(Number(item.price) || 0).toFixed(2)}
+                            {(Number(item.price) || 0)} Dhs
                           </span>
                         </div>
                         {item.description && (
@@ -280,7 +289,7 @@ const OrderPage = () => {
           <div className="max-w-5xl mx-auto flex items-center justify-between">
             <div>
               <span className="text-sm">{cartCount} items</span>
-              <span className="font-heading text-lg font-bold ml-3">${cartTotal.toFixed(2)}</span>
+              <span className="font-heading text-lg font-bold ml-3">{cartTotal.toFixed(0)} Dhs</span>
             </div>
             <button onClick={() => setShowCart(true)}
               className="bg-primary-500 text-charcoal px-6 py-2.5 rounded-full font-bold text-sm inline-flex items-center gap-2 hover:bg-primary-400 transition-colors">
@@ -318,7 +327,7 @@ const OrderPage = () => {
                     <div key={item.id} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-dark text-sm truncate">{item.name}</p>
-                        <p className="text-primary-500 text-sm font-bold">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="text-primary-500 text-sm font-bold">{(item.price * item.quantity).toFixed(0)} Dhs</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <button onClick={() => updateQty(item.id, -1)}
@@ -345,7 +354,7 @@ const OrderPage = () => {
               <div className="border-t border-gray-100 px-6 py-4">
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-semibold text-dark">Total</span>
-                  <span className="font-heading text-2xl font-bold text-primary-500">${cartTotal.toFixed(2)}</span>
+                  <span className="font-heading text-2xl font-bold text-primary-500">{cartTotal.toFixed(0)} Dhs</span>
                 </div>
                 <button onClick={() => { setShowCart(false); setShowCheckout(true); }}
                   className="btn-primary w-full text-center text-sm py-3 inline-flex items-center justify-center gap-2">
@@ -455,12 +464,12 @@ const OrderPage = () => {
                 {cart.map((item) => (
                   <div key={item.id} className="flex justify-between text-sm py-1">
                     <span className="text-gray-600">{item.name} × {item.quantity}</span>
-                    <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="font-medium">{(item.price * item.quantity).toFixed(0)} Dhs</span>
                   </div>
                 ))}
                 <div className="flex justify-between text-base font-bold text-dark mt-2 pt-2 border-t border-gray-200">
                   <span>Total</span>
-                  <span className="text-primary-500">${cartTotal.toFixed(2)}</span>
+                  <span className="text-primary-500">{cartTotal.toFixed(0)} Dhs</span>
                 </div>
               </div>
 
@@ -487,7 +496,7 @@ const OrderPage = () => {
                     Placing Order…
                   </>
                 ) : (
-                  <>Place Order — ${cartTotal.toFixed(2)}</>
+                  <>Place Order — {cartTotal.toFixed(0)} Dhs</>
                 )}
               </button>
             </div>

@@ -9,7 +9,7 @@ const MenuPage = () => {
     <>
       <SEO
         title="Menu"
-        description="Explore La Maison's exquisite menu — appetizers, entrées, desserts, and signature cocktails crafted by our Michelin-starred chefs."
+        description="Explore Aresh Al Madinah's full menu — Karahi, Biryani, BBQ, Daal, and more. Authentic Pakistani & Indian cuisine in Dubai."
       />
       {/* Page Banner */}
       <section

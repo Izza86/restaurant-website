@@ -5,7 +5,7 @@ const ContactPage = () => {
     <>
       <SEO
         title="Contact"
-        description="Get in touch with La Maison. Visit us at 123 Gourmet Avenue, call (212) 555-1234, or send us a message."
+        description="Get in touch with Aresh Al Madinah Restaurant. Visit us in Al Muteena, Deira, Dubai or call 04 570 1603."
       />
       {/* Page Banner */}
       <section

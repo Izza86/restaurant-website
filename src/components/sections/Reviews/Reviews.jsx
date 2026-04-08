@@ -27,7 +27,7 @@ const reviews = [
     role: 'Regular Guest',
     avatar: 'https://i.pravatar.cc/150?img=3',
     rating: 5,
-    text: 'La Maison has become our go-to spot for celebrations. The staff remembers our preferences and always recommends something wonderful. The crème brûlée is a must-try — the best I\'ve had outside Paris. Truly a gem.',
+    text: 'Aresh Al Madinah has become our go-to spot for authentic Pakistani food. The staff is friendly and the Mutton Karahi is a must-try — best I\'ve had in Dubai. Truly a gem.',
     date: 'February 2026',
   },
   {
@@ -72,7 +72,7 @@ const reviews = [
     role: 'Business Traveller',
     avatar: 'https://i.pravatar.cc/150?img=16',
     rating: 4,
-    text: 'I dine at fine restaurants across Europe and La Maison holds its own against the best. The Pan-Seared Salmon with beurre blanc was exceptional. Service was polished and attentive without being intrusive.',
+    text: 'I dine at many restaurants across Dubai and Aresh Al Madinah holds its own against the best. The Chicken Biryani was exceptional. Service was warm and attentive without being intrusive.',
     date: 'January 2026',
   },
   {

@@ -26,30 +26,30 @@ import {
 const values = [
   {
     icon: HiOutlineSparkles,
-    title: 'Passion for Excellence',
+    title: 'Authentic Recipes',
     description:
-      'Every dish is crafted with meticulous care by our award-winning chefs who bring decades of culinary expertise to your table.',
+      'Every dish is prepared using traditional recipes passed down through generations — the same flavours you\'d find in the streets of Lahore and Karachi.',
     accent: 'from-primary-400 to-primary-600',
   },
   {
     icon: HiOutlineHeart,
-    title: 'Farm to Table',
+    title: '100 % Halal',
     description:
-      'We source the freshest ingredients from local farms and trusted suppliers, ensuring exceptional quality and sustainability in every bite.',
+      'All our meat is certified Halal. We use the freshest ingredients sourced daily to ensure quality and taste in every single bite.',
     accent: 'from-rose-400 to-rose-600',
   },
   {
     icon: HiOutlineGlobe,
-    title: 'Global Inspiration',
+    title: 'Taste the World',
     description:
-      'Our menu draws from cuisines around the world, blending diverse culinary traditions into a uniquely memorable dining experience.',
+      'From smoky Karahis and slow-cooked Nihari to aromatic Biryanis and sizzling BBQ — our menu is a journey through South-Asian cuisine.',
     accent: 'from-sky-400 to-sky-600',
   },
   {
     icon: HiOutlineLightBulb,
-    title: 'Constant Innovation',
+    title: 'Warm Hospitality',
     description:
-      'We push the boundaries of modern gastronomy — experimenting with new techniques, seasonal concepts, and unexpected flavour pairings.',
+      'Whether you dine in, take away, or order online, we treat every customer like family. Great food deserves great service.',
     accent: 'from-amber-400 to-amber-600',
   },
 ];
@@ -60,51 +60,27 @@ const values = [
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const teamMembers = [
   {
-    name: 'Chef Antoine Moreau',
-    role: 'Executive Chef',
+    name: 'Head Chef',
+    role: 'Kitchen Lead',
     image:
       'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=500&q=80',
-    bio: '20+ years of Michelin-star experience. Trained at Le Bernardin and Per Se. Specialises in French-Asian fusion that pushes creative boundaries.',
+    bio: 'Our head chef brings years of experience from the best restaurants in Pakistan. Specialises in Karahi, BBQ, and traditional Desi cuisine.',
     socials: { instagram: '#', linkedin: '#' },
   },
   {
-    name: 'Sofia Castellano',
-    role: 'Head Pastry Chef',
+    name: 'Tandoor Master',
+    role: 'BBQ & Naan Specialist',
     image:
-      'https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=500&q=80',
-    bio: 'Graduated from Le Cordon Bleu Paris. Known for her innovative dessert creations that blend classic French pâtisserie with modern artistry.',
+      'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&q=80',
+    bio: 'The magic of our freshly baked naan and smoky tikkas comes from our tandoor master who has perfected his craft over 15+ years.',
     socials: { instagram: '#', linkedin: '#' },
   },
   {
-    name: 'Marcus Bennett',
-    role: 'Head Sommelier',
+    name: 'Biryani Chef',
+    role: 'Rice & Pulao Expert',
     image:
       'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80',
-    bio: 'Certified Master Sommelier with expertise across 200+ wine regions. Curates our rotating cellar of 450+ labels from around the world.',
-    socials: { instagram: '#', linkedin: '#' },
-  },
-  {
-    name: 'Elena Vasquez',
-    role: 'Restaurant Manager',
-    image:
-      'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=500&q=80',
-    bio: 'Hospitality degree from Cornell. 12 years managing fine-dining operations. Ensures every guest feels like a VIP from the moment they arrive.',
-    socials: { instagram: '#', linkedin: '#' },
-  },
-  {
-    name: 'Kenji Tanaka',
-    role: 'Sous Chef',
-    image:
-      'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&q=80',
-    bio: 'Trained in Tokyo and Lyon. Bridges Japanese precision with European flair. Oversees our celebrated omakase tasting experience.',
-    socials: { instagram: '#', linkedin: '#' },
-  },
-  {
-    name: 'Isabelle Dupont',
-    role: 'Bar Director',
-    image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80',
-    bio: 'Award-winning mixologist. Creates seasonal cocktail menus using house-made syrups, botanical infusions, and rare spirits.',
+    bio: 'Our Biryani chef uses the traditional dum-cooking method to create layered, aromatic Biryanis that keep customers coming back for more.',
     socials: { instagram: '#', linkedin: '#' },
   },
 ];
@@ -116,44 +92,44 @@ const teamMembers = [
 const awards = [
   {
     icon: FaStar,
-    title: 'Michelin Star',
-    year: '2018 – Present',
-    description: 'Awarded and retained every year since 2018',
+    title: '100 % Halal',
+    year: 'Always',
+    description: 'All meats are certified Halal — guaranteed quality and trust',
     color: 'text-primary-500',
   },
   {
     icon: FaTrophy,
-    title: 'James Beard Award',
-    year: '2022',
-    description: 'Outstanding Restaurant — Northeast Region',
+    title: '60+ Dishes',
+    year: 'Full Menu',
+    description: 'A wide variety of Karahi, Biryani, BBQ, Daal, and more',
     color: 'text-amber-500',
   },
   {
     icon: FaMedal,
-    title: 'Wine Spectator',
-    year: '2023',
-    description: 'Grand Award for exceptional wine program',
+    title: 'Fresh Ingredients',
+    year: 'Daily',
+    description: 'We source fresh meat and vegetables every single day',
     color: 'text-rose-500',
   },
   {
     icon: FaCrown,
-    title: 'AAA Five Diamond',
-    year: '2021 – Present',
-    description: 'Elite distinction for world-class dining',
+    title: 'Open 7 Days',
+    year: '6 AM – 2 AM',
+    description: 'Serving breakfast, lunch, and dinner all week long',
     color: 'text-sky-500',
   },
   {
     icon: FaNewspaper,
-    title: 'NY Times Critics\' Pick',
-    year: '2024',
-    description: '"One of the city\'s most thrilling tables"',
+    title: 'Dine-in & Takeaway',
+    year: 'Your Choice',
+    description: 'Enjoy at our restaurant or order for takeaway and delivery',
     color: 'text-emerald-500',
   },
   {
     icon: FaAward,
-    title: 'Zagat Top 10',
-    year: '2025',
-    description: 'Ranked #4 in New York City fine dining',
+    title: 'Family Friendly',
+    year: 'Everyone Welcome',
+    description: 'A warm and welcoming space for families and large groups',
     color: 'text-violet-500',
   },
 ];
@@ -214,7 +190,7 @@ const AboutPage = () => {
     <>
       <SEO
         title="About"
-        description="Learn about La Maison's story — 20+ years of culinary excellence, our award-winning team, Michelin-starred cuisine, and our commitment to exceptional dining."
+        description="Learn about Aresh Al Madinah Restaurant — authentic Pakistani & Indian cuisine in the heart of Dubai. Fresh Halal food, traditional recipes, and warm hospitality."
       />
 
       {/* ══════════════════════════════════════════════════
@@ -234,13 +210,13 @@ const AboutPage = () => {
 
         <div className="relative text-center px-4 z-10">
           <p className="text-primary-400 font-accent text-lg md:text-xl tracking-widest uppercase mb-3 opacity-0 animate-[fade-in_0.6s_0.2s_ease_forwards]">
-            Est. 2005
+            Dubai, UAE
           </p>
           <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 opacity-0 animate-[fade-in_0.6s_0.4s_ease_forwards]">
             Our Story
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-lg mx-auto opacity-0 animate-[fade-in_0.6s_0.6s_ease_forwards]">
-            Two decades of culinary passion, warm hospitality, and unforgettable flavours
+            Authentic flavours, warm hospitality, and unforgettable meals
           </p>
         </div>
 
@@ -263,28 +239,27 @@ const AboutPage = () => {
               </p>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-[2.6rem] font-bold text-dark leading-tight mb-6">
                 A Legacy of{' '}
-                <span className="text-gold-gradient">Culinary Art</span>
+                <span className="text-gold-gradient">Authentic Flavours</span>
               </h2>
 
               <div className="space-y-5 text-gray-600 leading-relaxed text-[0.95rem]">
                 <p>
-                  La Maison was born in 2005 from a simple yet ambitious dream:
-                  to create a space where extraordinary food, genuine warmth, and
-                  lasting memories intertwine. What began as a cozy 20-seat bistro
-                  on a quiet Greenwich Village corner has evolved into one of
-                  New York's most celebrated dining destinations.
+                  Aresh Al Madinah Restaurant was founded with a simple mission:
+                  to bring the true taste of Pakistan and India to Dubai. Located
+                  in the vibrant Al Muteena area of Deira, we’ve become a
+                  go-to destination for anyone craving authentic Desi food.
                 </p>
                 <p>
-                  Our founder, Jean-Pierre Moreau, believed that a great restaurant
-                  is not just about what's on the plate — it's about the stories
-                  shared across the table, the laughter that fills the room, and the
-                  care woven into every detail. That philosophy still guides us today.
+                  Our kitchen is led by experienced chefs who have mastered the
+                  art of Karahi, Biryani, BBQ, and traditional slow-cooked dishes.
+                  Every recipe is prepared with fresh, Halal ingredients and the
+                  same love you’d find in a home kitchen back in Pakistan.
                 </p>
                 <p>
-                  Over two decades, we've earned a Michelin star, a James Beard Award,
-                  and the trust of thousands of loyal guests — yet we've never lost
-                  sight of our roots. Every ingredient is hand-selected, every recipe
-                  refined with devotion, and every evening crafted to feel special.
+                  Whether you’re here for a quick lunch, a family dinner, or
+                  late-night cravings, our doors are open 7 days a week from
+                  6 AM to 2 AM. Come taste the difference — once you try our
+                  food, you’ll keep coming back.
                 </p>
               </div>
 
@@ -305,7 +280,7 @@ const AboutPage = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img
                   src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=700&q=80"
-                  alt="La Maison elegant dining room"
+                  alt="Aresh Al Madinah Restaurant"
                   className="w-full h-[420px] sm:h-[480px] object-cover"
                   loading="lazy"
                 />
@@ -315,8 +290,8 @@ const AboutPage = () => {
 
               {/* floating stat badge */}
               <div className="absolute -bottom-6 -left-4 md:-left-8 bg-charcoal text-white rounded-2xl p-5 shadow-xl z-10 border border-primary-500/20">
-                <p className="font-heading text-4xl font-bold text-primary-400">20+</p>
-                <p className="text-gray-300 text-sm">Years of Excellence</p>
+                <p className="font-heading text-4xl font-bold text-primary-400">60+</p>
+                <p className="text-gray-300 text-sm">Dishes on Menu</p>
               </div>
 
               {/* small accent image */}
@@ -359,10 +334,10 @@ const AboutPage = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4"
           >
             {[
-              { target: 20, suffix: '+', label: 'Years of Excellence', cls: 'fade-in-up stagger-1' },
-              { target: 150, suffix: 'K+', label: 'Guests Served', cls: 'fade-in-up stagger-2' },
-              { target: 45, suffix: '+', label: 'Awards Won', cls: 'fade-in-up stagger-3' },
-              { target: 30, suffix: '+', label: 'Expert Team', cls: 'fade-in-up stagger-4' },
+              { target: 60, suffix: '+', label: 'Dishes on Menu', cls: 'fade-in-up stagger-1' },
+              { target: 6, suffix: '', label: 'Food Categories', cls: 'fade-in-up stagger-2' },
+              { target: 7, suffix: ' Days', label: 'Open Weekly', cls: 'fade-in-up stagger-3' },
+              { target: 20, suffix: 'h', label: 'Daily Service', cls: 'fade-in-up stagger-4' },
             ].map((stat) => (
               <div key={stat.label} className={stat.cls}>
                 <AnimatedStat
@@ -437,7 +412,7 @@ const AboutPage = () => {
         <div className="container-custom">
           <SectionHeader
             title="Meet Our Team"
-            subtitle="The talented people behind every memorable meal at La Maison."
+            subtitle="The skilled hands behind every flavourful dish at Aresh Al Madinah."
           />
 
           <div ref={teamRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -490,8 +465,8 @@ const AboutPage = () => {
       <section className="section-padding bg-charcoal">
         <div className="container-custom">
           <SectionHeader
-            title="Awards & Recognition"
-            subtitle="Honoured by the industry's most prestigious institutions."
+            title="Why Choose Us"
+            subtitle="Here's what makes Aresh Al Madinah your favourite Desi restaurant in Dubai."
             light
           />
 
@@ -549,10 +524,10 @@ const AboutPage = () => {
         <div className="absolute inset-0 bg-charcoal/75 backdrop-blur-[2px]" />
         <div className="relative container-custom text-center z-10">
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
-            Ready to Experience <span className="text-primary-400">La Maison</span>?
+            Ready to Taste <span className="text-primary-400">Aresh Al Madinah</span>?
           </h2>
           <p className="text-gray-300 text-lg max-w-xl mx-auto mb-8">
-            Join us for an evening of exceptional cuisine, impeccable service, and moments you'll treasure forever.
+            Join us for a meal of authentic Desi flavours, warm service, and moments you’ll savour.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/reservations" className="btn-primary">

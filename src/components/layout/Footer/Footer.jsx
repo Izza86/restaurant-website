@@ -47,10 +47,7 @@ const legalLinks = [
 ];
 
 const hours = [
-  { days: 'Mon – Thu', time: '11 AM – 10 PM' },
-  { days: 'Friday',    time: '11 AM – 11 PM' },
-  { days: 'Saturday',  time: '10 AM – 11 PM' },
-  { days: 'Sunday',    time: '10 AM – 9 PM' },
+  { days: 'Mon – Sun', time: '6 AM – 2 AM' },
 ];
 
 
@@ -198,21 +195,21 @@ const Footer = () => {
                 group-hover:bg-primary-500 group-hover:text-white
                 transition-all duration-300
               ">
-                LM
+                AM
               </span>
               <div className="flex flex-col leading-none">
-                <span className="font-heading text-2xl font-bold text-white tracking-wide group-hover:text-primary-400 transition-colors duration-300">
-                  La&nbsp;<span className="text-gold-gradient">Maison</span>
+                <span className="font-heading text-xl font-bold text-white tracking-wide group-hover:text-primary-400 transition-colors duration-300">
+                  Aresh Al&nbsp;<span className="text-gold-gradient">Madinah</span>
                 </span>
-                <span className="text-[0.6rem] uppercase tracking-[0.35em] text-gray-500 font-body mt-[2px]">
-                  Fine Dining &amp; Bar
+                <span className="text-[0.55rem] uppercase tracking-[0.25em] text-gray-500 font-body mt-[2px]">
+                  Restaurant
                 </span>
               </div>
             </Link>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
-              Experience the art of fine dining — exquisite dishes crafted from the
-              freshest ingredients by world-class chefs in an unforgettable atmosphere.
+              Taste the World on One Plate — Authentic Pakistani, Indian &
+              Desi cuisine. Karahi, Biryani, BBQ & more in Dubai.
             </p>
 
             {/* Contact details */}
@@ -220,24 +217,29 @@ const Footer = () => {
               <li className="footer-info-row">
                 <HiOutlineLocationMarker className="text-primary-500 text-lg flex-shrink-0 mt-0.5" />
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=123+Gourmet+Avenue,+New+York,+NY+10001"
+                  href="https://www.google.com/maps/search/?api=1&query=Aresh+Al+Madinah+Restaurant+Dubai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary-400 transition-colors"
                 >
-                  123 Gourmet Avenue, Culinary District, NY 10001
+                  Al Muteena, Deira, Dubai, UAE
                 </a>
               </li>
               <li className="footer-info-row">
                 <HiOutlinePhone className="text-primary-500 text-lg flex-shrink-0" />
-                <a href="tel:+12125551234" className="hover:text-primary-400 transition-colors">
-                  (212) 555-1234
-                </a>
+                <span className="flex flex-col">
+                  <a href="tel:+97145701603" className="hover:text-primary-400 transition-colors">
+                    04 570 1603
+                  </a>
+                  <a href="tel:+971523840692" className="hover:text-primary-400 transition-colors">
+                    052 384 0692
+                  </a>
+                </span>
               </li>
               <li className="footer-info-row">
                 <HiOutlineMail className="text-primary-500 text-lg flex-shrink-0" />
-                <a href="mailto:hello@lamaison.com" className="hover:text-primary-400 transition-colors">
-                  hello@lamaison.com
+                <a href="mailto:areshalmadinah@gmail.com" className="hover:text-primary-400 transition-colors">
+                  areshalmadinah@gmail.com
                 </a>
               </li>
             </ul>
@@ -329,9 +331,9 @@ const Footer = () => {
       <div className="border-t border-white/[0.06]">
         <div className="container-custom py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-xs text-center md:text-left">
-            &copy; {currentYear} La Maison Fine Dining & Bar. All rights reserved.
+            &copy; {currentYear} Aresh Al Madinah Restaurant. All rights reserved.
             <span className="hidden sm:inline">
-              {' '}Crafted with passion in New York City.
+              {' '}Taste the World on One Plate — Dubai, UAE.
             </span>
           </p>
 
