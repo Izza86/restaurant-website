@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from '@components';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import { SettingsProvider } from './context/SettingsContext';
 
 /* ── Lazy-loaded pages (code-split per route) ─────────────────────── */
 const HomePage         = lazy(() => import('./pages/Home'));
@@ -34,6 +35,7 @@ const PageLoader = () => (
 const App = () => {
   return (
     <ErrorBoundary>
+      <SettingsProvider>
       <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>
@@ -60,6 +62,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </SettingsProvider>
     </ErrorBoundary>
   );
 };

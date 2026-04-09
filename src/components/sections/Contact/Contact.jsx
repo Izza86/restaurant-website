@@ -1,7 +1,8 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useMemo } from 'react';
 import SectionHeader from '../../common/SectionHeader';
 import { useScrollReveal } from '../../../hooks';
 import { addContactMessage as saveContactToFirestore } from '../../../services/firestoreService';
+import { useSettings } from '../../../context/SettingsContext';
 import {
   HiOutlineLocationMarker,
   HiOutlinePhone,
@@ -11,7 +12,7 @@ import {
   HiCheck,
   HiExclamationCircle,
 } from 'react-icons/hi';
-import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa';
 
 
 /* ╔═══════════════════════════════════════════════════════════════════╗
@@ -37,12 +38,6 @@ const HOURS = [
   { day: 'Friday',    open: 'Open', close: '24 Hours' },
   { day: 'Saturday',  open: 'Open', close: '24 Hours' },
   { day: 'Sunday',    open: 'Open', close: '24 Hours' },
-];
-
-const SOCIALS = [
-  { icon: FaFacebookF, href: 'https://facebook.com', label: 'Facebook' },
-  { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: FaTwitter,   href: 'https://twitter.com',   label: 'Twitter' },
 ];
 
 const TODAY_INDEX = new Date().getDay(); // 0 = Sun
@@ -131,6 +126,19 @@ const Field = ({ id, label, error, touched, children }) => (
    ║  CONTACT SECTION — main component                                ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const ContactSection = () => {
+  const s = useSettings();
+
+  /* Build social links from Firebase settings — only show icons with a URL */
+  const SOCIALS = useMemo(() => {
+    const all = [
+      { icon: FaFacebookF, href: s.facebook,  label: 'Facebook' },
+      { icon: FaInstagram, href: s.instagram, label: 'Instagram' },
+      { icon: FaTwitter,   href: s.twitter,   label: 'Twitter' },
+      { icon: FaTiktok,    href: s.tiktok,    label: 'TikTok' },
+    ];
+    return all.filter((l) => l.href && l.href.trim());
+  }, [s.facebook, s.instagram, s.twitter, s.tiktok]);
+
   /* ── form state ─────────────────────────────────────── */
   const emptyForm = { name: '', email: '', subject: '', message: '' };
   const [formData, setFormData]   = useState(emptyForm);
@@ -337,6 +345,7 @@ const ContactSection = () => {
             </div>
 
             {/* ── Social Media ───────────────────────── */}
+            {SOCIALS.length > 0 && (
             <div>
               <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
                 Follow Us
@@ -356,6 +365,7 @@ const ContactSection = () => {
                 ))}
               </div>
             </div>
+            )}
           </div>
 
           {/* ══════════════════════════════════════════════

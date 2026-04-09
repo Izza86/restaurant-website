@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   FaFacebookF,
@@ -17,20 +17,12 @@ import {
   HiExclamationCircle,
   HiArrowRight,
 } from 'react-icons/hi';
+import { useSettings } from '../../../context/SettingsContext';
 
 
 /* ╔═══════════════════════════════════════════════════════════════════╗
    ║  DATA                                                            ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
-const socialLinks = [
-  { icon: FaFacebookF,  href: 'https://facebook.com',  label: 'Facebook' },
-  { icon: FaInstagram,  href: 'https://instagram.com', label: 'Instagram' },
-  { icon: FaTwitter,    href: 'https://twitter.com',   label: 'Twitter' },
-  { icon: FaYelp,       href: 'https://yelp.com',      label: 'Yelp' },
-  { icon: FaPinterestP, href: 'https://pinterest.com', label: 'Pinterest' },
-  { icon: FaTiktok,     href: 'https://tiktok.com',    label: 'TikTok' },
-];
-
 const quickLinks = [
   { name: 'Home',         path: '/' },
   { name: 'Our Menu',     path: '/menu' },
@@ -171,6 +163,18 @@ const NewsletterForm = () => {
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const s = useSettings();
+
+  /* Build social links from saved settings — only show icons with a URL */
+  const socialLinks = useMemo(() => {
+    const all = [
+      { icon: FaFacebookF,  href: s.facebook,  label: 'Facebook' },
+      { icon: FaInstagram,  href: s.instagram, label: 'Instagram' },
+      { icon: FaTwitter,    href: s.twitter,   label: 'Twitter' },
+      { icon: FaTiktok,     href: s.tiktok,    label: 'TikTok' },
+    ];
+    return all.filter((l) => l.href && l.href.trim());
+  }, [s.facebook, s.instagram, s.twitter, s.tiktok]);
 
   return (
     <footer className="bg-charcoal text-gray-300 relative overflow-hidden">
@@ -285,6 +289,7 @@ const Footer = () => {
             <p className="text-gray-400 text-sm mb-4">
               Stay connected for behind-the-scenes, events, and culinary inspiration.
             </p>
+            {socialLinks.length > 0 ? (
             <div className="grid grid-cols-3 gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
@@ -302,6 +307,9 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+            ) : (
+              <p className="text-gray-500 text-sm italic">Add social links in Admin Settings.</p>
+            )}
 
             {/* legal links */}
             <h4 className="footer-heading mt-8">Legal</h4>
