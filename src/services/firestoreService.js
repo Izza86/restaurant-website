@@ -349,13 +349,15 @@ export async function getSettings() {
   }
 }
 
-/** Write settings to /settings (merge-update, does not delete missing keys) */
+/** Write settings to /settings (full overwrite so it works even on first save) */
 export async function updateSettings(data) {
   if (!data || typeof data !== 'object') {
     throw new Error('Settings data object is required.');
   }
   try {
-    await update(ref(db, 'settings'), { ...data, updatedAt: serverTimestamp() });
+    // Use set() instead of update() — works even if /settings doesn't exist yet.
+    // Use Date.now() instead of serverTimestamp() to avoid permission issues.
+    await set(ref(db, 'settings'), { ...data, updatedAt: Date.now() });
   } catch (error) {
     console.error('[dbService] updateSettings error:', error);
     throw error;
