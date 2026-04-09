@@ -128,8 +128,9 @@ export async function addOrUpdateMenuItem(id, data) {
   const sanitized = {
     name:        String(data.name).trim(),
     description: String(data.description ?? '').trim(),
-    category:    String(data.category ?? 'Main Courses').trim(),
+    category:    String(data.category ?? 'Aaresh Special').trim(),
     price:       typeof data.price === 'number' ? data.price : Number(data.price) || 0,
+    priceDisplay: String(data.priceDisplay ?? '').trim(),
     image:       String(data.image ?? '').trim(),
     dietaryTags: Array.isArray(data.dietaryTags) ? data.dietaryTags : [],
     isFeatured:  Boolean(data.isFeatured ?? false),
@@ -162,6 +163,41 @@ export async function deleteMenuItem(id) {
     await remove(ref(db, `menuItems/${id}`));
   } catch (error) {
     console.error('[dbService] deleteMenuItem error:', error);
+    throw error;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   MENU ITEMS — bulk seed (write all items at once, replacing existing)
+   ────────────────────────────────────────────────────────────────────── */
+export async function bulkSeedMenuItems(items) {
+  if (!Array.isArray(items) || items.length === 0) {
+    throw new Error('An array of menu items is required.');
+  }
+  try {
+    const data = {};
+    items.forEach((item, idx) => {
+      const key = `item_${String(idx + 1).padStart(3, '0')}`;
+      data[key] = {
+        name:         String(item.name || '').trim(),
+        description:  String(item.description ?? '').trim(),
+        category:     String(item.category ?? 'Aaresh Special').trim(),
+        price:        typeof item.price === 'number' ? item.price : Number(item.price) || 0,
+        priceDisplay: String(item.priceDisplay ?? '').trim(),
+        image:        String(item.image ?? '').trim(),
+        dietaryTags:  Array.isArray(item.dietaryTags) ? item.dietaryTags : (Array.isArray(item.dietary) ? item.dietary : []),
+        isFeatured:   Boolean(item.isFeatured ?? item.popular ?? false),
+        available:    Boolean(item.available ?? true),
+        sortOrder:    idx + 1,
+        createdAt:    serverTimestamp(),
+        updatedAt:    serverTimestamp(),
+      };
+    });
+    await set(ref(db, 'menuItems'), data);
+    return Object.keys(data).length;
+  } catch (error) {
+    console.error('[dbService] bulkSeedMenuItems error:', error);
     throw error;
   }
 }

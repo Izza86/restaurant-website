@@ -5,7 +5,7 @@ const ReservationsPage = () => {
     <>
       <SEO
         title="Reservations"
-        description="Reserve your table at Aresh Al Madinah Restaurant. Book online for authentic Desi dining in Al Muteena, Deira, Dubai."
+        description="Reserve your table at Aresh Al Madinah Restaurant. Book online for authentic Desi dining at 4th St - Al Murar, Dubai."
       />
       {/* Page Banner */}
       <section

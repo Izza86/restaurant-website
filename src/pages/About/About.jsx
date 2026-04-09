@@ -55,35 +55,7 @@ const values = [
 ];
 
 
-/* ╔═══════════════════════════════════════════════════════════════════╗
-   ║  DATA — Team Members                                             ║
-   ╚═══════════════════════════════════════════════════════════════════╝ */
-const teamMembers = [
-  {
-    name: 'Head Chef',
-    role: 'Kitchen Lead',
-    image:
-      'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=500&q=80',
-    bio: 'Our head chef brings years of experience from the best restaurants in Pakistan. Specialises in Karahi, BBQ, and traditional Desi cuisine.',
-    socials: { instagram: '#', linkedin: '#' },
-  },
-  {
-    name: 'Tandoor Master',
-    role: 'BBQ & Naan Specialist',
-    image:
-      'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&q=80',
-    bio: 'The magic of our freshly baked naan and smoky tikkas comes from our tandoor master who has perfected his craft over 15+ years.',
-    socials: { instagram: '#', linkedin: '#' },
-  },
-  {
-    name: 'Biryani Chef',
-    role: 'Rice & Pulao Expert',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80',
-    bio: 'Our Biryani chef uses the traditional dum-cooking method to create layered, aromatic Biryanis that keep customers coming back for more.',
-    socials: { instagram: '#', linkedin: '#' },
-  },
-];
+/* Team Members data hidden per owner request */
 
 
 /* ╔═══════════════════════════════════════════════════════════════════╗
@@ -182,7 +154,6 @@ const AnimatedStat = ({ target, suffix = '', label }) => {
 const AboutPage = () => {
   const storyRef   = useScrollReveal();
   const valuesRef  = useScrollReveal();
-  const teamRef    = useScrollReveal();
   const awardsRef  = useScrollReveal();
   const statsRef   = useScrollReveal();
 
@@ -246,7 +217,7 @@ const AboutPage = () => {
                 <p>
                   Aresh Al Madinah Restaurant was founded with a simple mission:
                   to bring the true taste of Pakistan and India to Dubai. Located
-                  in the vibrant Al Muteena area of Deira, we’ve become a
+                  on 4th St in the vibrant Al Murar area, we've become a
                   go-to destination for anyone craving authentic Desi food.
                 </p>
                 <p>
@@ -335,7 +306,7 @@ const AboutPage = () => {
           >
             {[
               { target: 60, suffix: '+', label: 'Dishes on Menu', cls: 'fade-in-up stagger-1' },
-              { target: 6, suffix: '', label: 'Food Categories', cls: 'fade-in-up stagger-2' },
+              { target: 14, suffix: '', label: 'Food Categories', cls: 'fade-in-up stagger-2' },
               { target: 7, suffix: ' Days', label: 'Open Weekly', cls: 'fade-in-up stagger-3' },
               { target: 20, suffix: 'h', label: 'Daily Service', cls: 'fade-in-up stagger-4' },
             ].map((stat) => (
@@ -405,58 +376,7 @@ const AboutPage = () => {
       </section>
 
 
-      {/* ══════════════════════════════════════════════════
-         SECTION 3 — Team Members Gallery
-         ══════════════════════════════════════════════════ */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <SectionHeader
-            title="Meet Our Team"
-            subtitle="The skilled hands behind every flavourful dish at Aresh Al Madinah."
-          />
-
-          <div ref={teamRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {teamMembers.map((member, index) => (
-              <div
-                key={member.name}
-                className={`about-team-card group fade-in-up stagger-${(index % 6) + 1}`}
-              >
-                {/* image */}
-                <div className="relative overflow-hidden rounded-t-2xl h-72 sm:h-80">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    loading="lazy"
-                  />
-
-                  {/* hover overlay with bio */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end">
-                    <div className="p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-400">
-                      <p className="text-white/90 text-sm leading-relaxed">
-                        {member.bio}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* role pill */}
-                  <div className="absolute top-4 left-4 bg-primary-500/90 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                    {member.role}
-                  </div>
-                </div>
-
-                {/* info bar */}
-                <div className="px-5 py-4 bg-white rounded-b-2xl border-t-0">
-                  <h3 className="font-heading text-lg font-bold text-dark group-hover:text-primary-600 transition-colors">
-                    {member.name}
-                  </h3>
-                  <p className="text-gray-400 text-sm">{member.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Team Members section hidden per owner request */}
 
 
       {/* ══════════════════════════════════════════════════

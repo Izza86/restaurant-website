@@ -217,12 +217,12 @@ const Footer = () => {
               <li className="footer-info-row">
                 <HiOutlineLocationMarker className="text-primary-500 text-lg flex-shrink-0 mt-0.5" />
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Aresh+Al+Madinah+Restaurant+Dubai"
+                  href="https://goo.gl/maps/FxHD49JPBk4w1dMf7?g_st=aw"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary-400 transition-colors"
                 >
-                  Al Muteena, Deira, Dubai, UAE
+                  4th St - Al Murar, Dubai, UAE
                 </a>
               </li>
               <li className="footer-info-row">
@@ -238,8 +238,8 @@ const Footer = () => {
               </li>
               <li className="footer-info-row">
                 <HiOutlineMail className="text-primary-500 text-lg flex-shrink-0" />
-                <a href="mailto:areshalmadinah@gmail.com" className="hover:text-primary-400 transition-colors">
-                  areshalmadinah@gmail.com
+                <a href="mailto:aresh.restaurant05@gmail.com" className="hover:text-primary-400 transition-colors">
+                  aresh.restaurant05@gmail.com
                 </a>
               </li>
             </ul>

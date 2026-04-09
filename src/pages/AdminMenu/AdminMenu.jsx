@@ -3,6 +3,7 @@ import {
   getMenuItems,
   addOrUpdateMenuItem,
   deleteMenuItem,
+  bulkSeedMenuItems,
 } from '../../services/firestoreService';
 import {
   HiOutlinePencilAlt,
@@ -37,6 +38,7 @@ const emptyForm = {
   name: '',
   description: '',
   price: '',
+  priceDisplay: '',
   category: 'Aaresh Special',
   image: '',
   dietaryTags: '',
@@ -209,10 +211,10 @@ const ItemForm = ({ form, setForm, onSubmit, onCancel, saving, isEditing }) => {
         />
       </div>
 
-      {/* Row 3 — price + sortOrder + image */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {/* Row 3 — price + priceDisplay + sortOrder + image */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
-          <label className={labelCls}>Price ($) *</label>
+          <label className={labelCls}>Price (Dhs) *</label>
           <input
             name="price"
             type="number"
@@ -224,6 +226,17 @@ const ItemForm = ({ form, setForm, onSubmit, onCancel, saving, isEditing }) => {
             required
             className={inputCls}
           />
+        </div>
+        <div>
+          <label className={labelCls}>Price Display</label>
+          <input
+            name="priceDisplay"
+            value={form.priceDisplay}
+            onChange={handleChange}
+            placeholder="15/22"
+            className={inputCls}
+          />
+          <p className="text-xs text-gray-400 mt-0.5">e.g. "15/22" for sizes</p>
         </div>
         <div>
           <label className={labelCls}>Sort Order</label>
@@ -375,6 +388,7 @@ const AdminMenu = () => {
     description: form.description,
     category:    form.category,
     price:       form.price,
+    priceDisplay: form.priceDisplay,
     image:       form.image,
     dietaryTags: parseDietaryTags(form.dietaryTags),
     isFeatured:  form.isFeatured,
@@ -415,7 +429,8 @@ const AdminMenu = () => {
       name:        item.name        || '',
       description: item.description || '',
       price:       String(item.price ?? ''),
-      category:    item.category    || 'Appetizers',
+      priceDisplay: item.priceDisplay || '',
+      category:    item.category    || 'Aaresh Special',
       image:       item.image       || item.imageUrl || '',
       dietaryTags: (item.dietaryTags || item.dietary || []).join(', '),
       isFeatured:  Boolean(item.isFeatured ?? item.popular ?? false),
@@ -446,6 +461,26 @@ const AdminMenu = () => {
     setEditingId(null);
   }, []);
 
+  /* ── seed default menu ──────────────────────────────── */
+  const [seeding, setSeeding] = useState(false);
+  const handleSeedMenu = useCallback(async () => {
+    if (!window.confirm(
+      'This will REPLACE all existing menu items with the default 155-item menu. Continue?'
+    )) return;
+
+    setSeeding(true);
+    try {
+      const { fallbackMenuItems } = await import('../../components/sections/Menu/Menu.jsx');
+      const count = await bulkSeedMenuItems(fallbackMenuItems);
+      setToast({ type: 'success', msg: `✅ ${count} menu items loaded successfully!` });
+      await fetchItems();
+    } catch (err) {
+      setToast({ type: 'error', msg: err.message || 'Seed failed.' });
+    } finally {
+      setSeeding(false);
+    }
+  }, [fetchItems]);
+
   /* ── password gate ──────────────────────────────────── */
   if (!authed) return <PasswordGate onAuth={setAuthed} />;
 
@@ -463,14 +498,25 @@ const AdminMenu = () => {
               Add, edit, or remove dishes from the menu.
             </p>
           </div>
-          <button
-            onClick={fetchItems}
-            disabled={loading}
-            className="btn-outline inline-flex items-center gap-2 text-sm self-start"
-          >
-            <HiOutlineRefresh className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            Refresh
-          </button>
+          <div className="flex items-center gap-2 self-start flex-wrap">
+            <button
+              onClick={fetchItems}
+              disabled={loading}
+              className="btn-outline inline-flex items-center gap-2 text-sm"
+            >
+              <HiOutlineRefresh className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+              Refresh
+            </button>
+            {items.length === 0 && !loading && (
+              <button
+                onClick={handleSeedMenu}
+                disabled={seeding}
+                className="bg-primary-500 text-white inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl hover:bg-primary-600 transition-colors disabled:opacity-60"
+              >
+                {seeding ? 'Loading…' : '🍽️ Load Default Menu (155 items)'}
+              </button>
+            )}
+          </div>
         </div>
 
         {/* ── Toast ───────────────────────────────────── */}
@@ -548,7 +594,14 @@ const AdminMenu = () => {
           {!loading && !error && items.length === 0 && (
             <div className="py-16 text-center text-gray-400">
               <p className="font-heading text-lg mb-1">No items yet</p>
-              <p className="text-sm">Add your first menu item above.</p>
+              <p className="text-sm mb-4">Add your first menu item above, or load the full default menu.</p>
+              <button
+                onClick={handleSeedMenu}
+                disabled={seeding}
+                className="bg-primary-500 text-white inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-primary-600 transition-colors disabled:opacity-60"
+              >
+                {seeding ? 'Loading…' : '🍽️ Load Default Menu (155 items)'}
+              </button>
             </div>
           )}
 
@@ -605,7 +658,7 @@ const AdminMenu = () => {
 
                       {/* price */}
                       <td className="px-4 py-3 text-right font-medium text-dark">
-                        {typeof item.price === 'number' ? item.price.toFixed(2) : item.price ?? '—'} Dhs
+                        {item.priceDisplay || (typeof item.price === 'number' ? item.price.toFixed(0) : item.price ?? '—')} Dhs
                       </td>
 
                       {/* featured */}

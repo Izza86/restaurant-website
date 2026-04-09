@@ -18,7 +18,7 @@ import {
 const aboutHighlights = [
   { stat: '60+', label: 'Dishes on Menu' },
   { stat: '1000+', label: 'Happy Customers' },
-  { stat: '6', label: 'Food Categories' },
+  { stat: '14', label: 'Food Categories' },
   { stat: '7 Days', label: 'Open Weekly' },
 ];
 
@@ -30,8 +30,8 @@ const contactItems = [
   {
     icon: HiOutlineLocationMarker,
     label: 'Visit Us',
-    value: 'Al Muteena, Deira, Dubai, UAE',
-    href: 'https://www.google.com/maps/search/?api=1&query=Aresh+Al+Madinah+Restaurant+Dubai',
+    value: '4th St - Al Murar, Dubai, UAE',
+    href: 'https://goo.gl/maps/FxHD49JPBk4w1dMf7?g_st=aw',
     external: true,
   },
   {
@@ -44,8 +44,8 @@ const contactItems = [
   {
     icon: HiOutlineMail,
     label: 'Email',
-    value: 'areshalmadinah@gmail.com',
-    href: 'mailto:areshalmadinah@gmail.com',
+    value: 'aresh.restaurant05@gmail.com',
+    href: 'mailto:aresh.restaurant05@gmail.com',
     external: false,
   },
   {
@@ -275,7 +275,7 @@ const HomePage = () => {
         <div className="container-custom">
           <SectionHeader
             title="Visit Us"
-            subtitle="We'd love to welcome you. Find us in Al Muteena, Deira, Dubai."
+            subtitle="We'd love to welcome you. Find us at 4th St - Al Murar, Dubai."
           />
 
           <div ref={contactRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -317,7 +317,7 @@ const HomePage = () => {
             <div className="lg:col-span-3 rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-in-left">
               <iframe
                 title="Aresh Al Madinah Restaurant location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.5!2d55.32!3d25.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE2JzEyLjAiTiA1NcKwMTknMTIuMCJF!5e0!3m2!1sen!2sae!4v1"
+                src="https://maps.google.com/maps?q=4th+St+-+Al+Murar+-+Dubai+-+United+Arab+Emirates&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-56 md:h-64 border-0"
                 allowFullScreen
                 loading="lazy"

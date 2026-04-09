@@ -19,14 +19,14 @@ import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const RESTAURANT = {
   name: 'Aresh Al Madinah Restaurant',
-  address: 'Al Muteena, Deira',
+  address: '4th St - Al Murar',
   city: 'Dubai, UAE',
   phone: '04 570 1603',
   phoneTel: '+97145701603',
-  email: 'areshalmadinah@gmail.com',
-  mapsQuery: 'Aresh+Al+Madinah+Restaurant+Dubai',
+  email: 'aresh.restaurant05@gmail.com',
+  mapsQuery: '4th+St+Al+Murar+Dubai+Aresh+Al+Madinah',
   mapsEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.5!2d55.32!3d25.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE2JzEyLjAiTiA1NcKwMTknMTIuMCJF!5e0!3m2!1sen!2sae!4v1',
+    'https://maps.google.com/maps?q=4th+St+-+Al+Murar+-+Dubai+-+United+Arab+Emirates&t=&z=16&ie=UTF8&iwloc=&output=embed',
 };
 
 const HOURS = [

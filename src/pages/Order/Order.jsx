@@ -20,19 +20,191 @@ import {
 
 
 /* ╔═══════════════════════════════════════════════════════════════════╗
-   ║  FALLBACK MENU (if Firebase not connected)                       ║
+   ║  FALLBACK MENU — full 155-item real menu (if Firebase empty)     ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
 const FALLBACK_ITEMS = [
-  { id: 'f1', name: 'Butter Chicken',    price: 15, category: 'Aaresh Special',   image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
-  { id: 'f2', name: 'Nihari',            price: 7,  category: 'Regular Menu',     image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
-  { id: 'f3', name: 'Chicken Karahi',    price: 20, category: 'Special Karahi',   image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
-  { id: 'f4', name: 'Chicken Biryani',   price: 12, category: 'Biryani / Pulao',  image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80', available: true },
-  { id: 'f5', name: 'Daal Makhani',      price: 10, category: 'Special Daal',     image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
-  { id: 'f6', name: 'Chicken Charcoal',  price: 18, category: 'BBQ & Grill',      image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
-  { id: 'f7', name: 'Chicken Manchurian', price: 17, category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
-  { id: 'f8', name: 'Shawarma',          price: 6,  category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
-  { id: 'f9', name: 'Zinger Burger',     price: 14, category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
-  { id: 'f10', name: 'Naan',             price: 3,  category: 'Roti & Paratha',   image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  /* ── Aaresh Special ─────────────────────────────────── */
+  { id: 'f1',  name: 'Kabab Masala',       price: 15, priceDisplay: '15/22', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80', available: true },
+  { id: 'f2',  name: 'Sarson Ka Saag',     price: 10, priceDisplay: '10/15', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f3',  name: 'Butter Chicken',     price: 15, priceDisplay: '15/22', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f4',  name: 'Chicken Achari',     price: 15, priceDisplay: '15/22', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f5',  name: 'Egg / Chicken Noodles', price: 10, priceDisplay: '10/12', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f6',  name: 'Tikha Masala',       price: 15, priceDisplay: '15/22', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f7',  name: 'Chapli Kabab',       price: 12, priceDisplay: '12',    category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80', available: true },
+  { id: 'f8',  name: 'Rosh',               price: 25, priceDisplay: '25/40', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f9',  name: 'Halwa Puri',         price: 7,  priceDisplay: '07',    category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f10', name: 'Soup',               price: 5,  priceDisplay: '05/10', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&q=80', available: true },
+  { id: 'f11', name: 'Fish Fry',           price: 22, priceDisplay: '22',    category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&q=80', available: true },
+  { id: 'f12', name: 'Tawa Qeema',         price: 15, priceDisplay: '15/22', category: 'Aaresh Special', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+
+  /* ── Regular Menu ───────────────────────────────────── */
+  { id: 'f13', name: 'Paya',               price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f14', name: 'Nihari',             price: 7,  priceDisplay: '07/10/15', category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f15', name: 'Alu Ghosht',         price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f16', name: 'Haleem',             price: 7,  priceDisplay: '07/10/15', category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f17', name: 'Kadhi Pakora',       price: 7,  priceDisplay: '07/10/15', category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f18', name: 'Chana',              price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f19', name: 'Murg Chana',         price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f20', name: 'Egg Chana',          price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f21', name: 'Kofta Chana',        price: 7,  priceDisplay: '07',       category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f22', name: 'Kofta Masala',       price: 7,  priceDisplay: '07/10/15', category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f23', name: 'Brain Masala',       price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f24', name: 'Qeema',              price: 7,  priceDisplay: '07/10/15', category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f25', name: 'Mutton Korma',       price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f26', name: 'Chicken Korma',      price: 10, priceDisplay: '10/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f27', name: 'Omlet',              price: 3,  priceDisplay: '03/05',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400&q=80', available: true },
+  { id: 'f28', name: 'Cheese Omlet',       price: 8,  priceDisplay: '08/15',    category: 'Regular Menu', image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400&q=80', available: true },
+
+  /* ── Special Karahi ─────────────────────────────────── */
+  { id: 'f29', name: 'Chicken Karahi',         price: 20, priceDisplay: '20/35',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f30', name: 'Chicken Handi',          price: 25, priceDisplay: '25/35',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f31', name: 'Chicken White Handi',    price: 35, priceDisplay: '35/48',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f32', name: 'Chicken BBQ Karahi',     price: 35, priceDisplay: '35/48',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1631292784640-2b24be784d5d?w=400&q=80', available: true },
+  { id: 'f33', name: 'Chicken Peshawri',       price: 25, priceDisplay: '25/35',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f34', name: 'Chicken Jalfrezi',       price: 35, priceDisplay: '35/48',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f35', name: 'Mutton Karahi',          price: 37, priceDisplay: '37/52',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f36', name: 'Mutton Handi',           price: 37, priceDisplay: '37/52',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f37', name: 'Mutton Peshawari',       price: 35, priceDisplay: '35/48',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f38', name: 'Mutton White Pepper',    price: 35, priceDisplay: '35/48',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f39', name: 'Mutton Black Pepper',    price: 35, priceDisplay: '35/48',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+  { id: 'f40', name: 'Beef Karahi',            price: 30, priceDisplay: '30/45',  category: 'Special Karahi', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+
+  /* ── Special Daal ───────────────────────────────────── */
+  { id: 'f41', name: 'Daal',               price: 5,  priceDisplay: '05/07/12', category: 'Special Daal', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f42', name: 'Daal Makhani',       price: 10, priceDisplay: '10/15',    category: 'Special Daal', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f43', name: 'Daal Shahi',         price: 10, priceDisplay: '10/15',    category: 'Special Daal', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f44', name: 'Daal Chicken',       price: 10, priceDisplay: '10/15',    category: 'Special Daal', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f45', name: 'Daal Achaari',       price: 8,  priceDisplay: '08/15',    category: 'Special Daal', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f46', name: 'Daal Mutton',        price: 15, priceDisplay: '15/20',    category: 'Special Daal', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+
+  /* ── Veg Menu ───────────────────────────────────────── */
+  { id: 'f47', name: 'Vegetables',          price: 5,  priceDisplay: '05/08/15', category: 'Veg Menu', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f48', name: 'Veg with Chicken',    price: 7,  priceDisplay: '07/10/15', category: 'Veg Menu', image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&q=80', available: true },
+  { id: 'f49', name: 'Veg with Mutton',     price: 10, priceDisplay: '10/15/18', category: 'Veg Menu', image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&q=80', available: true },
+
+  /* ── Biryani / Pulao ────────────────────────────────── */
+  { id: 'f50', name: 'Chicken Biryani',        price: 12, priceDisplay: '12/18', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80', available: true },
+  { id: 'f51', name: 'Mutton Biryani',         price: 15, priceDisplay: '15/20', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80', available: true },
+  { id: 'f52', name: 'Chicken Pulao',          price: 12, priceDisplay: '12/18', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80', available: true },
+  { id: 'f53', name: 'Mutton Pulao',           price: 15, priceDisplay: '15/20', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80', available: true },
+  { id: 'f54', name: 'Daal Chawal',            price: 8,  priceDisplay: '08/14', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&q=80', available: true },
+  { id: 'f55', name: 'Veg Fried Rice',         price: 10, priceDisplay: '10/15', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f56', name: 'Chicken Fried Rice',     price: 12, priceDisplay: '12/18', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f57', name: 'Afghani Rice',           price: 10, priceDisplay: '10/15', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80', available: true },
+  { id: 'f58', name: 'Fish Pulao',             price: 30, priceDisplay: '30',    category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&q=80', available: true },
+  { id: 'f59', name: 'Quarter BBQ Rice',       price: 15, priceDisplay: '15/18', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f60', name: 'Chicken Makina W. Rice', price: 18, priceDisplay: '18/38', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f61', name: 'Chicken BBQ W. Rice',    price: 25, priceDisplay: '25/45', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f62', name: 'Kabab Rice',             price: 12, priceDisplay: '12/18', category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80', available: true },
+  { id: 'f63', name: 'Fish Rice',              price: 28, priceDisplay: '28',    category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&q=80', available: true },
+  { id: 'f64', name: 'Quarter Makina W. Rice', price: 15, priceDisplay: '15',    category: 'Biryani / Pulao', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+
+  /* ── BBQ & Grill ────────────────────────────────────── */
+  { id: 'f65',  name: 'Makina Chicken W. Fries (Half)', description: 'Garlic + Hummus + Bread', price: 13, priceDisplay: '13/25', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f66',  name: 'Makina Chicken Combo', description: 'Cold Drink + Garlic + Hummus + Bread', price: 27, priceDisplay: '27', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f67',  name: 'Chicken Charcoal',    description: 'Fries + Garlic + Hummus + Bread', price: 18, priceDisplay: '18/30', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f68',  name: 'Green Chilli Charcoal', description: 'Fries + Garlic + Hummus + Bread', price: 20, priceDisplay: '20/35', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f69',  name: 'Black Pepper Charcoal', description: 'Fries + Garlic + Hummus + Bread', price: 20, priceDisplay: '20/35', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f70',  name: 'Mix Charcoal W. Fries', price: 20, priceDisplay: '20/32', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+  { id: 'f71',  name: 'Malai Boti W. Fries (4 PCS)', price: 12, priceDisplay: '12', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1610057099443-fde6c99db9e1?w=400&q=80', available: true },
+  { id: 'f72',  name: 'Tikha Boti W. Fries (4 PCS)', price: 10, priceDisplay: '10', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1610057099443-fde6c99db9e1?w=400&q=80', available: true },
+  { id: 'f73',  name: 'Tikka Piece W. Fries', price: 12, priceDisplay: '12', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1610057099443-fde6c99db9e1?w=400&q=80', available: true },
+  { id: 'f74',  name: 'Kabab W. Fries (2 PCS)', price: 22, priceDisplay: '22', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&q=80', available: true },
+  { id: 'f75',  name: 'BBQ Mix Platter',      price: 35, priceDisplay: '35/65/110', category: 'BBQ & Grill', image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80', available: true },
+
+  /* ── Chinese & Sea Food ─────────────────────────────── */
+  { id: 'f76',  name: 'Veg Manchurian',       price: 15, priceDisplay: '15', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f77',  name: 'Gobi Manchurian',      price: 15, priceDisplay: '15', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f78',  name: 'Paneer Manchurian',    price: 16, priceDisplay: '16', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f79',  name: 'Mutton Manchurian',    price: 25, priceDisplay: '25', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f80',  name: 'Chicken Manchurian',   price: 17, priceDisplay: '17', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f81',  name: 'Chilli Chicken',       price: 17, priceDisplay: '17', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&q=80', available: true },
+  { id: 'f82',  name: 'Fish Chilli',          description: 'Normal / Spicy', price: 20, priceDisplay: '20', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&q=80', available: true },
+  { id: 'f83',  name: 'Prawn Manchurian',     description: 'Normal / Spicy', price: 21, priceDisplay: '21', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&q=80', available: true },
+  { id: 'f84',  name: 'Prawn Chilli',         description: 'Normal / Spicy', price: 22, priceDisplay: '22', category: 'Chinese & Sea Food', image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400&q=80', available: true },
+
+  /* ── Shawarma & Rolls ───────────────────────────────── */
+  { id: 'f85',  name: 'Shawarma (Normal / Spicy)', price: 6,  priceDisplay: '06', category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+  { id: 'f86',  name: 'Shawarma Plate',        price: 15, priceDisplay: '15', category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+  { id: 'f87',  name: 'Arabic Shawarma',       price: 10, priceDisplay: '10', category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+  { id: 'f88',  name: 'Hassan Mathar',         price: 8,  priceDisplay: '08', category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+  { id: 'f89',  name: 'Shawarma with Hummus',  price: 10, priceDisplay: '10', category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+  { id: 'f90',  name: 'Paratha Roll',          price: 5,  priceDisplay: '05', category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+  { id: 'f91',  name: 'Zinger Shawarma',       price: 10, priceDisplay: '10', category: 'Shawarma & Rolls', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&q=80', available: true },
+
+  /* ── Burgers & Sandwiches ───────────────────────────── */
+  { id: 'f92',  name: 'Chicken Burger',    price: 8,  priceDisplay: '08/12', category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
+  { id: 'f93',  name: 'Beef Burger',       price: 12, priceDisplay: '12/15', category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
+  { id: 'f94',  name: 'Zinger Burger',     price: 14, priceDisplay: '14/20', category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
+  { id: 'f95',  name: 'Fish Burger',       price: 15, priceDisplay: '15/20', category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
+  { id: 'f96',  name: 'Hot Dog Burger',    price: 8,  priceDisplay: '08',    category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
+  { id: 'f97',  name: 'Veg Burger',        price: 7,  priceDisplay: '07',    category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80', available: true },
+  { id: 'f98',  name: 'Chicken Club',      price: 15, priceDisplay: '15',    category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80', available: true },
+  { id: 'f99',  name: 'Beef Club',         price: 15, priceDisplay: '15',    category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80', available: true },
+  { id: 'f100', name: 'Zinger Club',       price: 18, priceDisplay: '18',    category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80', available: true },
+  { id: 'f101', name: 'Hot Dog Club',      price: 12, priceDisplay: '12',    category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80', available: true },
+  { id: 'f102', name: 'Egg Club',          price: 10, priceDisplay: '10',    category: 'Burgers & Sandwiches', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80', available: true },
+
+  /* ── Snacks & Salads ────────────────────────────────── */
+  { id: 'f103', name: 'Samosa',               price: 3,  priceDisplay: '03',    category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=400&q=80', available: true },
+  { id: 'f104', name: 'Pakora',               price: 5,  priceDisplay: '05',    category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=400&q=80', available: true },
+  { id: 'f105', name: 'Chana Chaat',          price: 7,  priceDisplay: '07/10', category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=400&q=80', available: true },
+  { id: 'f106', name: 'Samosa Chaat',         price: 10, priceDisplay: '10/15', category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=400&q=80', available: true },
+  { id: 'f107', name: 'Fruit Chaat',          price: 10, priceDisplay: '10',    category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=400&q=80', available: true },
+  { id: 'f108', name: 'Sweet Kheer',          price: 7,  priceDisplay: '07',    category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=400&q=80', available: true },
+  { id: 'f109', name: 'Afghani Slice Salad',  price: 8,  priceDisplay: '08',    category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80', available: true },
+  { id: 'f110', name: 'Greek Salad',          price: 12, priceDisplay: '12',    category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80', available: true },
+  { id: 'f111', name: 'Arugula Salad',        price: 10, priceDisplay: '10',    category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80', available: true },
+  { id: 'f112', name: 'Yogurt Cucumber Salad', price: 10, priceDisplay: '10',   category: 'Snacks & Salads', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80', available: true },
+
+  /* ── Roti & Paratha ─────────────────────────────────── */
+  { id: 'f113', name: 'Saada Roti',            price: 1,    priceDisplay: '01',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f114', name: 'Tawa Roti',             price: 1.5,  priceDisplay: '1.50', category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f115', name: 'Naan',                  price: 3,    priceDisplay: '03',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f116', name: 'Saada Paratha',         price: 2,    priceDisplay: '02',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f117', name: 'Aloo Paratha',          price: 3,    priceDisplay: '03',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f118', name: 'Qeema Paratha',         price: 8,    priceDisplay: '08',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f119', name: 'Quetta Paratha',        price: 3,    priceDisplay: '03',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f120', name: 'Tandoori Paratha',      price: 3,    priceDisplay: '03',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f121', name: 'Chicken Paratha',       price: 7,    priceDisplay: '07',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+  { id: 'f122', name: 'Chicken Cheese Paratha', price: 8,   priceDisplay: '08',   category: 'Roti & Paratha', image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80', available: true },
+
+  /* ── Beverages ──────────────────────────────────────── */
+  { id: 'f123', name: 'Karak Tea',          price: 1,    priceDisplay: '01',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6211f?w=400&q=80', available: true },
+  { id: 'f124', name: 'Fresh Milk Tea',     price: 3,    priceDisplay: '03',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6211f?w=400&q=80', available: true },
+  { id: 'f125', name: 'Mint Tea',           price: 2,    priceDisplay: '02',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6211f?w=400&q=80', available: true },
+  { id: 'f126', name: 'Black Coffee',       price: 1.5,  priceDisplay: '1.50',  category: 'Beverages', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6211f?w=400&q=80', available: true },
+  { id: 'f127', name: 'Coffee with Milk',   price: 3,    priceDisplay: '03',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6211f?w=400&q=80', available: true },
+  { id: 'f128', name: 'Cold Drink 1.5L',    price: 6,    priceDisplay: '06',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', available: true },
+  { id: 'f129', name: 'Cane Cold Drink',    price: 2,    priceDisplay: '02',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', available: true },
+  { id: 'f130', name: 'Water Bottle Small', price: 1,    priceDisplay: '01',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', available: true },
+  { id: 'f131', name: 'Water Bottle 1.5L',  price: 2,    priceDisplay: '02',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', available: true },
+  { id: 'f132', name: 'Laban',              price: 1,    priceDisplay: '01',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80', available: true },
+  { id: 'f133', name: 'Pineapple Juice',    price: 7,    priceDisplay: '07/10', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f134', name: 'Orange Juice',       price: 9,    priceDisplay: '09/12', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f135', name: 'Mango Juice',        price: 9,    priceDisplay: '09/12', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f136', name: 'Grape Juice',        price: 8,    priceDisplay: '08/10', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f137', name: 'Watermelon Juice',   price: 7,    priceDisplay: '07/10', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f138', name: 'Avocado Juice',      price: 9,    priceDisplay: '09/12', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f139', name: 'Apple Juice',        price: 9,    priceDisplay: '09/12', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f140', name: 'Banana Juice',       price: 7,    priceDisplay: '07/10', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f141', name: 'Mint Margarita',     price: 10,   priceDisplay: '10/12', category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f142', name: 'Special Juice',      price: 12,   priceDisplay: '12',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f143', name: 'Cocktail',           price: 7,    priceDisplay: '07',    category: 'Beverages', image: 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=400&q=80', available: true },
+  { id: 'f144', name: 'Special Lassi',      price: 5,    priceDisplay: '05/10', category: 'Beverages', image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6211f?w=400&q=80', available: true },
+
+  /* ── Meals & Combos ─────────────────────────────────── */
+  { id: 'f145', name: 'Snacks Meal',        description: '2 PCS Chicken + Garlic + 1 Bun + Mayonnaise', price: 10, priceDisplay: '10', category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&q=80', available: true },
+  { id: 'f146', name: 'Dinner Meal',        description: '2 PCS Chicken Fried + Garlic + 1 Bun + Fries + Mayonnaise', price: 15, priceDisplay: '15/20', category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&q=80', available: true },
+  { id: 'f147', name: 'Aresh Special Meal',  description: '4 PCS Chicken Fried + Garlic + 2 Bun + Cold Drink + Mayonnaise', price: 30, priceDisplay: '30', category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&q=80', available: true },
+  { id: 'f148', name: 'Family Meal',        description: '6 PCS Fried Chicken + Garlic + 3 Bun + Fries + Cold Drink + Mayonnaise', price: 50, priceDisplay: '50', category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&q=80', available: true },
+  { id: 'f149', name: 'Party Meal',         description: '10 PCS Chicken + Garlic + 10 Bun + Cold Drink + Fries + Mayonnaise', price: 90, priceDisplay: '90', category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&q=80', available: true },
+  { id: 'f150', name: 'Simple Fries',       price: 5,  priceDisplay: '05/10',  category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80', available: true },
+  { id: 'f151', name: 'Fries W. Hummus',    price: 10, priceDisplay: '10/15',  category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80', available: true },
+  { id: 'f152', name: 'Fries W. Cheese',    price: 10, priceDisplay: '10/15',  category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80', available: true },
+  { id: 'f153', name: 'Fries W. Cold Drink', price: 7, priceDisplay: '07/15', category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80', available: true },
+  { id: 'f154', name: 'White Cream Pasta',  price: 22, priceDisplay: '22',    category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&q=80', available: true },
+  { id: 'f155', name: 'Red Sauce Pasta',    price: 15, priceDisplay: '15',    category: 'Meals & Combos', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&q=80', available: true },
 ];
 
 const CATEGORY_ORDER = [
@@ -248,7 +420,7 @@ const OrderPage = () => {
                         <div className="flex items-start justify-between gap-2 mb-2">
                           <h3 className="font-semibold text-dark text-sm">{item.name}</h3>
                           <span className="font-bold text-primary-500 text-sm whitespace-nowrap">
-                            {(Number(item.price) || 0)} Dhs
+                            {item.priceDisplay || (Number(item.price) || 0)} Dhs
                           </span>
                         </div>
                         {item.description && (
