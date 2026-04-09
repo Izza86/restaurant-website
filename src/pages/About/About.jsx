@@ -85,8 +85,8 @@ const awards = [
   },
   {
     icon: FaCrown,
-    title: 'Open 7 Days',
-    year: '6 AM – 2 AM',
+    title: 'Open 24/7',
+    year: '24 Hours',
     description: 'Serving breakfast, lunch, and dinner all week long',
     color: 'text-sky-500',
   },
@@ -228,8 +228,8 @@ const AboutPage = () => {
                 </p>
                 <p>
                   Whether you’re here for a quick lunch, a family dinner, or
-                  late-night cravings, our doors are open 7 days a week from
-                  6 AM to 2 AM. Come taste the difference — once you try our
+                  late-night cravings, our doors are open 24 hours a day,
+                  7 days a week. Come taste the difference — once you try our
                   food, you’ll keep coming back.
                 </p>
               </div>
@@ -308,7 +308,7 @@ const AboutPage = () => {
               { target: 60, suffix: '+', label: 'Dishes on Menu', cls: 'fade-in-up stagger-1' },
               { target: 14, suffix: '', label: 'Food Categories', cls: 'fade-in-up stagger-2' },
               { target: 7, suffix: ' Days', label: 'Open Weekly', cls: 'fade-in-up stagger-3' },
-              { target: 20, suffix: 'h', label: 'Daily Service', cls: 'fade-in-up stagger-4' },
+              { target: 24, suffix: 'h', label: 'Daily Service', cls: 'fade-in-up stagger-4' },
             ].map((stat) => (
               <div key={stat.label} className={stat.cls}>
                 <AnimatedStat

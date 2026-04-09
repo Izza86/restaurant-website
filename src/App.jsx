@@ -12,6 +12,7 @@ const ContactPage      = lazy(() => import('./pages/Contact'));
 const NotFoundPage     = lazy(() => import('./pages/NotFound'));
 const AdminMenuPage       = lazy(() => import('./pages/AdminMenu'));
 const AdminDashboardPage  = lazy(() => import('./pages/AdminDashboard'));
+const AdminSettingsPage   = lazy(() => import('./pages/AdminSettings'));
 const OrderPage            = lazy(() => import('./pages/Order'));
 
 /* ── Page loading spinner ─────────────────────────────────────────── */
@@ -39,6 +40,7 @@ const App = () => {
             {/* Admin routes — outside Layout (no header/footer) */}
             <Route path="admin/menu"      element={<AdminMenuPage />} />
             <Route path="admin/dashboard" element={<AdminDashboardPage />} />
+            <Route path="admin/settings"  element={<AdminSettingsPage />} />
 
             {/* Order page — outside Layout (own header) */}
             <Route path="order" element={<OrderPage />} />

@@ -13,6 +13,7 @@
    ║                        markMessageRead(id)                        ║
    ║    • /orders          → addOrder(data), getOrders(),             ║
    ║                        updateOrderStatus(id, status)              ║
+   ║    • /settings        → getSettings(), updateSettings(data)      ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
 
 import {
@@ -304,6 +305,59 @@ export async function updateOrderStatus(id, status) {
     await update(ref(db, `orders/${id}`), { status, updatedAt: serverTimestamp() });
   } catch (error) {
     console.error('[dbService] updateOrderStatus error:', error);
+    throw error;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────────────
+   SETTINGS — restaurant info editable from admin panel
+   ────────────────────────────────────────────────────────────────────── */
+
+/** Default settings — used when nothing exists in DB yet */
+export const DEFAULT_SETTINGS = {
+  phone:           '04 570 1603',
+  phoneTel:        '+97145701603',
+  phone2:          '052 384 0692',
+  phone2Tel:       '+971523840692',
+  email:           'aresh.restaurant05@gmail.com',
+  address:         '4th St - Al Murar',
+  city:            'Dubai, UAE',
+  whatsappNumber:  '971523840692',
+  whatsappMessage: "Hi! I'd like to make an inquiry about Aresh Al Madinah Restaurant.",
+  mapsLink:        'https://goo.gl/maps/FxHD49JPBk4w1dMf7?g_st=aw',
+  mapsEmbed:       'https://maps.google.com/maps?q=4th+St+-+Al+Murar+-+Dubai+-+United+Arab+Emirates&t=&z=16&ie=UTF8&iwloc=&output=embed',
+  facebook:        '',
+  instagram:       '',
+  tiktok:          '',
+  twitter:         '',
+  aboutText:       'Taste the World on One Plate — Authentic Pakistani, Indian & Desi cuisine. Karahi, Biryani, BBQ & more in Dubai.',
+  hours:           'Open 24/7',
+};
+
+/** Read settings from /settings (returns DEFAULT_SETTINGS merged with DB data) */
+export async function getSettings() {
+  try {
+    const snapshot = await get(ref(db, 'settings'));
+    if (snapshot.exists()) {
+      return { ...DEFAULT_SETTINGS, ...snapshot.val() };
+    }
+    return { ...DEFAULT_SETTINGS };
+  } catch (error) {
+    console.error('[dbService] getSettings error:', error);
+    return { ...DEFAULT_SETTINGS };
+  }
+}
+
+/** Write settings to /settings (merge-update, does not delete missing keys) */
+export async function updateSettings(data) {
+  if (!data || typeof data !== 'object') {
+    throw new Error('Settings data object is required.');
+  }
+  try {
+    await update(ref(db, 'settings'), { ...data, updatedAt: serverTimestamp() });
+  } catch (error) {
+    console.error('[dbService] updateSettings error:', error);
     throw error;
   }
 }

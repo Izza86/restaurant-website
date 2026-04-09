@@ -30,13 +30,13 @@ const RESTAURANT = {
 };
 
 const HOURS = [
-  { day: 'Monday',    open: '6:00 AM', close: '2:00 AM' },
-  { day: 'Tuesday',   open: '6:00 AM', close: '2:00 AM' },
-  { day: 'Wednesday', open: '6:00 AM', close: '2:00 AM' },
-  { day: 'Thursday',  open: '6:00 AM', close: '2:00 AM' },
-  { day: 'Friday',    open: '6:00 AM', close: '2:00 AM' },
-  { day: 'Saturday',  open: '6:00 AM', close: '2:00 AM' },
-  { day: 'Sunday',    open: '6:00 AM', close: '2:00 AM' },
+  { day: 'Monday',    open: 'Open', close: '24 Hours' },
+  { day: 'Tuesday',   open: 'Open', close: '24 Hours' },
+  { day: 'Wednesday', open: 'Open', close: '24 Hours' },
+  { day: 'Thursday',  open: 'Open', close: '24 Hours' },
+  { day: 'Friday',    open: 'Open', close: '24 Hours' },
+  { day: 'Saturday',  open: 'Open', close: '24 Hours' },
+  { day: 'Sunday',    open: 'Open', close: '24 Hours' },
 ];
 
 const SOCIALS = [

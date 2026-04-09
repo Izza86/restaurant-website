@@ -282,7 +282,7 @@ const Header = () => {
                 04 570 1603
               </a>
               <span className="text-xs text-gray-600">
-                Mon – Sun &nbsp;·&nbsp; 6 AM – 2 AM
+                Open 24/7
               </span>
             </div>
           </div>

@@ -51,7 +51,7 @@ const contactItems = [
   {
     icon: HiOutlineClock,
     label: 'Hours',
-    value: 'Mon–Sun 6AM–2AM',
+    value: 'Open 24/7',
     href: null,
     external: false,
   },

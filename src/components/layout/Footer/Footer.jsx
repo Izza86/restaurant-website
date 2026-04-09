@@ -47,7 +47,7 @@ const legalLinks = [
 ];
 
 const hours = [
-  { days: 'Mon – Sun', time: '6 AM – 2 AM' },
+  { days: 'Every Day', time: 'Open 24 Hours' },
 ];
 
 
