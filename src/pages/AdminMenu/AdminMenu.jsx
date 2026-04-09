@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {
   getMenuItems,
   addOrUpdateMenuItem,
@@ -497,6 +498,14 @@ const AdminMenu = () => {
             <p className="text-gray-400 text-sm mt-1">
               Add, edit, or remove dishes from the menu.
             </p>
+            <div className="flex items-center gap-3 mt-2">
+              <Link to="/admin/dashboard" className="text-xs text-primary-600 hover:text-primary-500 transition-colors">
+                Dashboard
+              </Link>
+              <Link to="/admin/settings" className="text-xs text-primary-600 hover:text-primary-500 transition-colors">
+                Settings
+              </Link>
+            </div>
           </div>
           <div className="flex items-center gap-2 self-start flex-wrap">
             <button

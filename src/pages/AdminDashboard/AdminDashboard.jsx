@@ -212,6 +212,9 @@ const AdminDashboard = () => {
             <p className="text-gray-400 text-xs mt-0.5">Manage orders, reservations & messages</p>
           </div>
           <div className="flex items-center gap-3">
+            <Link to="/admin/settings" className="text-xs text-primary-400 hover:text-primary-300 transition-colors">
+              Settings
+            </Link>
             <Link to="/admin/menu" className="text-xs text-primary-400 hover:text-primary-300 transition-colors">
               Menu Manager →
             </Link>
